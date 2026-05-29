@@ -1,0 +1,3678 @@
+
+// This XML file does not appear to have any style information associated with it. The document tree is shown below.
+// <definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions">
+// <types>
+// <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions">
+// <element name="BatchLocationBinMandatory">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="BatchLocationBinMandatory_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="CreateInfoHandheldScan2">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="actionTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="fromLocationCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="toLocationCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="descriptionP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="CreateInfoHandheldScan2_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="CreateInfoHandheldScan">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="actionTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="descriptionP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="CreateInfoHandheldScan_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="DeleteAnyHandheldScan">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="pEntryNo" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DeleteAnyHandheldScan_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DeleteHandheldScanWithBin">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="session" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DeleteHandheldScanWithBin_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DeleteHandheldScan">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="session" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DeleteHandheldScan_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DeleteTransferOrder">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DeleteTransferOrder_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferHeaderCreate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="transferFromCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="transferToCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferHeaderCreate_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferHeaderPostShipment">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferHeaderPostShipment_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferHeaderRelease">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferHeaderRelease_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferLineCreateUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCodeP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferLineCreateUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="DirectTransferLineShip">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCodeP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferLineShip_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferPurchaseHeaderPost">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferPurchaseHeaderPost_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferZeroQtyToShip">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectTransferZeroQtyToShip_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectedPickRegister">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectedPickRegister_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="DirectedPickUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectedPickUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="DirectedPutAwayRegister">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectedPutAwayRegister_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="DirectedPutAwayUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="DirectedPutAwayUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="GetBarcodeQuery">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNo" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetBarcodeQuery_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetBinQtyOnHand">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="binCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetBinQtyOnHand_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetCustomers">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="GetCustomers_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetDirectPurchaseOrderInfo">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetDirectPurchaseOrderInfo_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetDirectedPhysInventoryLines">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNo" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetDirectedPhysInventoryLines_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetDiscountedPrice">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="salesPriceP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetDiscountedPrice_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetHandheldLocationSecurity">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="userName" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetHandheldLocationSecurity_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetHandheldScan">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="entryNo" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="actionType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="docType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="docNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="varirantCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetHandheldScan_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetItemInfoFromQRCode">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="modelNo" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetItemInfoFromQRCode_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetItemJournalBatches">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="templateType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="username" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetItemJournalBatches_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetItemQtyOnHandAdv">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetItemQtyOnHandAdv_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetItemQtyOnHand">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="lotCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="username" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetItemQtyOnHand_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetJournalBatchSessions">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="documentType" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetJournalBatchSessions_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetLotQtyOnHand">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="lotNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetLotQtyOnHand_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetPhysInvQtyCalculated">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetPhysInvQtyCalculated_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetPhysInvQtyScannedBase">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="actionType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="session" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCodeTo" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetPhysInvQtyScannedBase_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetPurchaseHeaders">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="docType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="docNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="status" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetPurchaseHeaders_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetRetailPricePerBarcode">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetRetailPricePerBarcode_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetRetailPrice">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="pItemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="pVariantCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="pUnitOfMeasure" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="pLocationCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetRetailPrice_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetSalesAndDiscountedPrices">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="salesPriceP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="discountedPriceP" type="decimal"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetSalesAndDiscountedPrices_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="salesPriceP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="discountedPriceP" type="decimal"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetSalesHeaders">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="docType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="docNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="status" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetSalesHeaders_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetSalesHeaders_239473069">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="GetSalesHeaders_239473069_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetSalesPrice">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetSalesPrice_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetTransferHeaders">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="no" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="status" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="isDirectTransfer" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="isPutAway" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="isPick" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetTransferHeaders_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetUsers">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="GetUsers_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetVendors">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="GetVendors_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseActivityHeaders">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="no" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="type" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseActivityHeaders_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseActivityLines">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="activityType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="actionType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNo" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseActivityLines_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseJournalBatches">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="templatetype" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseJournalBatches_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseReceiptHeaders">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="no" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="fromDate" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseReceiptHeaders_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseReceiptLines">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="docNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="varirantCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseReceiptLines_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseShipmentHeaders">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="no" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="fromDate" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseShipmentHeaders_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseShipmentLines">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="docNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="varirantCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="GetWarehouseShipmentLines_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="HandheldScanSearch">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="actionType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="docType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="docNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="session" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="HandheldScanSearch_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="IsDirectTOPOUpdatedAndPosted">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="IsDirectTOPOUpdatedAndPosted_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="LocationBinMandatory">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="LocationBinMandatory_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="Login">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="username" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="password" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="Login_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="MaxHandheldScan">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="MaxHandheldScan_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PickTransferHeaderPostReceipt">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PickTransferHeaderPostReceipt_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PickTransferLineCreateUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCodeP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PickTransferLineCreateUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="PickTransferLineReceive">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PickTransferLineReceive_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="Ping">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="Ping_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PostHandheldScanBinToBin">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="actionType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="baseUnitOfMEasureCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="documentType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="expiry" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCodeTo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="qtyPerUnitOfMeasure" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantity" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityBase" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="scannedDateTime" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userId" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="session" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PostHandheldScanBinToBin_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PostHandheldScanPhysInv">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="actionType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="baseUnitOfMEasureCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="documentType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="expiry" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="qtyPerUnitOfMeasure" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantity" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityBase" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="scannedDateTime" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userId" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="session" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PostHandheldScanPhysInv_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PostHandheldScan">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="actionType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="baseUnitOfMEasureCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCodeTo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="documentType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="entryNo" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="expiry" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryTo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemDescription" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalBatchName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="journalTemplateName" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="lineNo" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCodeTo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoTo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="processed" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="processedBy" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="processedDateTime" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="qtyPerUnitOfMeasure" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantity" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityBase" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="scannedDateTime" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoTo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userId" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="session" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="deleted" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="deletedBy" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="deletedDateTime" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PostHandheldScan_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseHeaderCreate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="vendorNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseHeaderCreate_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseHeaderPost">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseHeaderPost_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseHeaderRelease">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseHeaderRelease_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseLineCreateUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseLineCreateUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="PurchaseLineReceive">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseLineReceive_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="PurchaseZeroQtyToReceiveShip">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PurchaseZeroQtyToReceiveShip_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PutAwayTransferHeaderPostReceipt">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PutAwayTransferHeaderPostReceipt_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PutAwayTransferLineCreateUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCodeP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PutAwayTransferLineCreateUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="PutAwayTransferLineReceive">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCodeP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="PutAwayTransferLineReceive_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ReopenTransferOrder">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ReopenTransferOrder_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ResetPorcessingDirectTOField">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ResetPorcessingDirectTOField_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="SalesHeaderCreate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="customerNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="locationCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SalesHeaderCreate_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SalesHeaderPost">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SalesHeaderPost_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SalesHeaderRelease">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SalesHeaderRelease_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SalesLineCreateUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SalesLineCreateUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="SalesLineShip">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SalesLineShip_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="SalesZeroQtyToShipReceive">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentTypeP" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SalesZeroQtyToShipReceive_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SelectPOForDirectTO">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoPOP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNoTOP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="SelectPOForDirectTO_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="ToJsonString">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="textP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ToJsonString_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferHeaderCreate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="transferFromCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="transferToCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferHeaderCreate_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferHeaderPostReceipt">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferHeaderPostReceipt_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferHeaderPostShipment">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferHeaderPostShipment_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferHeaderRelease">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferHeaderRelease_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferLineCreateUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferLineCreateUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="TransferLineReceive">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferLineReceive_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferLineShip">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="unitOfMeasureCodeP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="quantityP" type="decimal"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiryDateP" type="date"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferLineShip_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferZeroQtyToReceive">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferZeroQtyToReceive_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferZeroQtyToShip">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="TransferZeroQtyToShip_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateBinOptimized">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateBinOptimized_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateBin">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCode" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateBin_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateLotNoOptimized">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNo" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateLotNoOptimized_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateLot">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="lotNo" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateLot_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateMoveByItem">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="locationCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="itemNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="variantCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="binCode" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="lotNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="expiry" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateMoveByItem_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateUniqueSerialRequest">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="actionType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentType" type="int"/>
+// <element minOccurs="1" maxOccurs="1" name="documentNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="barcodeNo" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="serialNo" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="ValidateUniqueSerialRequest_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="WarehouseReceiptPost">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="WarehouseReceiptPost_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="WarehouseReceiptUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="WarehouseReceiptUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="WarehouseShipmentPost">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="WarehouseShipmentPost_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="WarehouseShipmentUpdate">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="documentNoP" type="string"/>
+// <element minOccurs="1" maxOccurs="1" name="userIdP" type="string"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="WarehouseShipmentUpdate_Result">
+// <complexType>
+// <sequence/>
+// </complexType>
+// </element>
+// <element name="test1">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="param" type="boolean"/>
+// </sequence>
+// </complexType>
+// </element>
+// <element name="test1_Result">
+// <complexType>
+// <sequence>
+// <element minOccurs="1" maxOccurs="1" name="return_value" type="int"/>
+// </sequence>
+// </complexType>
+// </element>
+// </schema>
+// </types>
+// <message name="BatchLocationBinMandatory">
+// <part name="parameters" element="tns:BatchLocationBinMandatory"/>
+// </message>
+// <message name="BatchLocationBinMandatory_Result">
+// <part name="parameters" element="tns:BatchLocationBinMandatory_Result"/>
+// </message>
+// <message name="CreateInfoHandheldScan2">
+// <part name="parameters" element="tns:CreateInfoHandheldScan2"/>
+// </message>
+// <message name="CreateInfoHandheldScan2_Result">
+// <part name="parameters" element="tns:CreateInfoHandheldScan2_Result"/>
+// </message>
+// <message name="CreateInfoHandheldScan">
+// <part name="parameters" element="tns:CreateInfoHandheldScan"/>
+// </message>
+// <message name="CreateInfoHandheldScan_Result">
+// <part name="parameters" element="tns:CreateInfoHandheldScan_Result"/>
+// </message>
+// <message name="DeleteAnyHandheldScan">
+// <part name="parameters" element="tns:DeleteAnyHandheldScan"/>
+// </message>
+// <message name="DeleteAnyHandheldScan_Result">
+// <part name="parameters" element="tns:DeleteAnyHandheldScan_Result"/>
+// </message>
+// <message name="DeleteHandheldScanWithBin">
+// <part name="parameters" element="tns:DeleteHandheldScanWithBin"/>
+// </message>
+// <message name="DeleteHandheldScanWithBin_Result">
+// <part name="parameters" element="tns:DeleteHandheldScanWithBin_Result"/>
+// </message>
+// <message name="DeleteHandheldScan">
+// <part name="parameters" element="tns:DeleteHandheldScan"/>
+// </message>
+// <message name="DeleteHandheldScan_Result">
+// <part name="parameters" element="tns:DeleteHandheldScan_Result"/>
+// </message>
+// <message name="DeleteTransferOrder">
+// <part name="parameters" element="tns:DeleteTransferOrder"/>
+// </message>
+// <message name="DeleteTransferOrder_Result">
+// <part name="parameters" element="tns:DeleteTransferOrder_Result"/>
+// </message>
+// <message name="DirectTransferHeaderCreate">
+// <part name="parameters" element="tns:DirectTransferHeaderCreate"/>
+// </message>
+// <message name="DirectTransferHeaderCreate_Result">
+// <part name="parameters" element="tns:DirectTransferHeaderCreate_Result"/>
+// </message>
+// <message name="DirectTransferHeaderPostShipment">
+// <part name="parameters" element="tns:DirectTransferHeaderPostShipment"/>
+// </message>
+// <message name="DirectTransferHeaderPostShipment_Result">
+// <part name="parameters" element="tns:DirectTransferHeaderPostShipment_Result"/>
+// </message>
+// <message name="DirectTransferHeaderRelease">
+// <part name="parameters" element="tns:DirectTransferHeaderRelease"/>
+// </message>
+// <message name="DirectTransferHeaderRelease_Result">
+// <part name="parameters" element="tns:DirectTransferHeaderRelease_Result"/>
+// </message>
+// <message name="DirectTransferLineCreateUpdate">
+// <part name="parameters" element="tns:DirectTransferLineCreateUpdate"/>
+// </message>
+// <message name="DirectTransferLineCreateUpdate_Result">
+// <part name="parameters" element="tns:DirectTransferLineCreateUpdate_Result"/>
+// </message>
+// <message name="DirectTransferLineShip">
+// <part name="parameters" element="tns:DirectTransferLineShip"/>
+// </message>
+// <message name="DirectTransferLineShip_Result">
+// <part name="parameters" element="tns:DirectTransferLineShip_Result"/>
+// </message>
+// <message name="DirectTransferPurchaseHeaderPost">
+// <part name="parameters" element="tns:DirectTransferPurchaseHeaderPost"/>
+// </message>
+// <message name="DirectTransferPurchaseHeaderPost_Result">
+// <part name="parameters" element="tns:DirectTransferPurchaseHeaderPost_Result"/>
+// </message>
+// <message name="DirectTransferZeroQtyToShip">
+// <part name="parameters" element="tns:DirectTransferZeroQtyToShip"/>
+// </message>
+// <message name="DirectTransferZeroQtyToShip_Result">
+// <part name="parameters" element="tns:DirectTransferZeroQtyToShip_Result"/>
+// </message>
+// <message name="DirectedPickRegister">
+// <part name="parameters" element="tns:DirectedPickRegister"/>
+// </message>
+// <message name="DirectedPickRegister_Result">
+// <part name="parameters" element="tns:DirectedPickRegister_Result"/>
+// </message>
+// <message name="DirectedPickUpdate">
+// <part name="parameters" element="tns:DirectedPickUpdate"/>
+// </message>
+// <message name="DirectedPickUpdate_Result">
+// <part name="parameters" element="tns:DirectedPickUpdate_Result"/>
+// </message>
+// <message name="DirectedPutAwayRegister">
+// <part name="parameters" element="tns:DirectedPutAwayRegister"/>
+// </message>
+// <message name="DirectedPutAwayRegister_Result">
+// <part name="parameters" element="tns:DirectedPutAwayRegister_Result"/>
+// </message>
+// <message name="DirectedPutAwayUpdate">
+// <part name="parameters" element="tns:DirectedPutAwayUpdate"/>
+// </message>
+// <message name="DirectedPutAwayUpdate_Result">
+// <part name="parameters" element="tns:DirectedPutAwayUpdate_Result"/>
+// </message>
+// <message name="GetBarcodeQuery">
+// <part name="parameters" element="tns:GetBarcodeQuery"/>
+// </message>
+// <message name="GetBarcodeQuery_Result">
+// <part name="parameters" element="tns:GetBarcodeQuery_Result"/>
+// </message>
+// <message name="GetBinQtyOnHand">
+// <part name="parameters" element="tns:GetBinQtyOnHand"/>
+// </message>
+// <message name="GetBinQtyOnHand_Result">
+// <part name="parameters" element="tns:GetBinQtyOnHand_Result"/>
+// </message>
+// <message name="GetCustomers">
+// <part name="parameters" element="tns:GetCustomers"/>
+// </message>
+// <message name="GetCustomers_Result">
+// <part name="parameters" element="tns:GetCustomers_Result"/>
+// </message>
+// <message name="GetDirectPurchaseOrderInfo">
+// <part name="parameters" element="tns:GetDirectPurchaseOrderInfo"/>
+// </message>
+// <message name="GetDirectPurchaseOrderInfo_Result">
+// <part name="parameters" element="tns:GetDirectPurchaseOrderInfo_Result"/>
+// </message>
+// <message name="GetDirectedPhysInventoryLines">
+// <part name="parameters" element="tns:GetDirectedPhysInventoryLines"/>
+// </message>
+// <message name="GetDirectedPhysInventoryLines_Result">
+// <part name="parameters" element="tns:GetDirectedPhysInventoryLines_Result"/>
+// </message>
+// <message name="GetDiscountedPrice">
+// <part name="parameters" element="tns:GetDiscountedPrice"/>
+// </message>
+// <message name="GetDiscountedPrice_Result">
+// <part name="parameters" element="tns:GetDiscountedPrice_Result"/>
+// </message>
+// <message name="GetHandheldLocationSecurity">
+// <part name="parameters" element="tns:GetHandheldLocationSecurity"/>
+// </message>
+// <message name="GetHandheldLocationSecurity_Result">
+// <part name="parameters" element="tns:GetHandheldLocationSecurity_Result"/>
+// </message>
+// <message name="GetHandheldScan">
+// <part name="parameters" element="tns:GetHandheldScan"/>
+// </message>
+// <message name="GetHandheldScan_Result">
+// <part name="parameters" element="tns:GetHandheldScan_Result"/>
+// </message>
+// <message name="GetItemInfoFromQRCode">
+// <part name="parameters" element="tns:GetItemInfoFromQRCode"/>
+// </message>
+// <message name="GetItemInfoFromQRCode_Result">
+// <part name="parameters" element="tns:GetItemInfoFromQRCode_Result"/>
+// </message>
+// <message name="GetItemJournalBatches">
+// <part name="parameters" element="tns:GetItemJournalBatches"/>
+// </message>
+// <message name="GetItemJournalBatches_Result">
+// <part name="parameters" element="tns:GetItemJournalBatches_Result"/>
+// </message>
+// <message name="GetItemQtyOnHandAdv">
+// <part name="parameters" element="tns:GetItemQtyOnHandAdv"/>
+// </message>
+// <message name="GetItemQtyOnHandAdv_Result">
+// <part name="parameters" element="tns:GetItemQtyOnHandAdv_Result"/>
+// </message>
+// <message name="GetItemQtyOnHand">
+// <part name="parameters" element="tns:GetItemQtyOnHand"/>
+// </message>
+// <message name="GetItemQtyOnHand_Result">
+// <part name="parameters" element="tns:GetItemQtyOnHand_Result"/>
+// </message>
+// <message name="GetJournalBatchSessions">
+// <part name="parameters" element="tns:GetJournalBatchSessions"/>
+// </message>
+// <message name="GetJournalBatchSessions_Result">
+// <part name="parameters" element="tns:GetJournalBatchSessions_Result"/>
+// </message>
+// <message name="GetLotQtyOnHand">
+// <part name="parameters" element="tns:GetLotQtyOnHand"/>
+// </message>
+// <message name="GetLotQtyOnHand_Result">
+// <part name="parameters" element="tns:GetLotQtyOnHand_Result"/>
+// </message>
+// <message name="GetPhysInvQtyCalculated">
+// <part name="parameters" element="tns:GetPhysInvQtyCalculated"/>
+// </message>
+// <message name="GetPhysInvQtyCalculated_Result">
+// <part name="parameters" element="tns:GetPhysInvQtyCalculated_Result"/>
+// </message>
+// <message name="GetPhysInvQtyScannedBase">
+// <part name="parameters" element="tns:GetPhysInvQtyScannedBase"/>
+// </message>
+// <message name="GetPhysInvQtyScannedBase_Result">
+// <part name="parameters" element="tns:GetPhysInvQtyScannedBase_Result"/>
+// </message>
+// <message name="GetPurchaseHeaders">
+// <part name="parameters" element="tns:GetPurchaseHeaders"/>
+// </message>
+// <message name="GetPurchaseHeaders_Result">
+// <part name="parameters" element="tns:GetPurchaseHeaders_Result"/>
+// </message>
+// <message name="GetRetailPricePerBarcode">
+// <part name="parameters" element="tns:GetRetailPricePerBarcode"/>
+// </message>
+// <message name="GetRetailPricePerBarcode_Result">
+// <part name="parameters" element="tns:GetRetailPricePerBarcode_Result"/>
+// </message>
+// <message name="GetRetailPrice">
+// <part name="parameters" element="tns:GetRetailPrice"/>
+// </message>
+// <message name="GetRetailPrice_Result">
+// <part name="parameters" element="tns:GetRetailPrice_Result"/>
+// </message>
+// <message name="GetSalesAndDiscountedPrices">
+// <part name="parameters" element="tns:GetSalesAndDiscountedPrices"/>
+// </message>
+// <message name="GetSalesAndDiscountedPrices_Result">
+// <part name="parameters" element="tns:GetSalesAndDiscountedPrices_Result"/>
+// </message>
+// <message name="GetSalesHeaders">
+// <part name="parameters" element="tns:GetSalesHeaders"/>
+// </message>
+// <message name="GetSalesHeaders_Result">
+// <part name="parameters" element="tns:GetSalesHeaders_Result"/>
+// </message>
+// <message name="GetSalesHeaders_239473069">
+// <part name="parameters" element="tns:GetSalesHeaders_239473069"/>
+// </message>
+// <message name="GetSalesHeaders_239473069_Result">
+// <part name="parameters" element="tns:GetSalesHeaders_239473069_Result"/>
+// </message>
+// <message name="GetSalesPrice">
+// <part name="parameters" element="tns:GetSalesPrice"/>
+// </message>
+// <message name="GetSalesPrice_Result">
+// <part name="parameters" element="tns:GetSalesPrice_Result"/>
+// </message>
+// <message name="GetTransferHeaders">
+// <part name="parameters" element="tns:GetTransferHeaders"/>
+// </message>
+// <message name="GetTransferHeaders_Result">
+// <part name="parameters" element="tns:GetTransferHeaders_Result"/>
+// </message>
+// <message name="GetUsers">
+// <part name="parameters" element="tns:GetUsers"/>
+// </message>
+// <message name="GetUsers_Result">
+// <part name="parameters" element="tns:GetUsers_Result"/>
+// </message>
+// <message name="GetVendors">
+// <part name="parameters" element="tns:GetVendors"/>
+// </message>
+// <message name="GetVendors_Result">
+// <part name="parameters" element="tns:GetVendors_Result"/>
+// </message>
+// <message name="GetWarehouseActivityHeaders">
+// <part name="parameters" element="tns:GetWarehouseActivityHeaders"/>
+// </message>
+// <message name="GetWarehouseActivityHeaders_Result">
+// <part name="parameters" element="tns:GetWarehouseActivityHeaders_Result"/>
+// </message>
+// <message name="GetWarehouseActivityLines">
+// <part name="parameters" element="tns:GetWarehouseActivityLines"/>
+// </message>
+// <message name="GetWarehouseActivityLines_Result">
+// <part name="parameters" element="tns:GetWarehouseActivityLines_Result"/>
+// </message>
+// <message name="GetWarehouseJournalBatches">
+// <part name="parameters" element="tns:GetWarehouseJournalBatches"/>
+// </message>
+// <message name="GetWarehouseJournalBatches_Result">
+// <part name="parameters" element="tns:GetWarehouseJournalBatches_Result"/>
+// </message>
+// <message name="GetWarehouseReceiptHeaders">
+// <part name="parameters" element="tns:GetWarehouseReceiptHeaders"/>
+// </message>
+// <message name="GetWarehouseReceiptHeaders_Result">
+// <part name="parameters" element="tns:GetWarehouseReceiptHeaders_Result"/>
+// </message>
+// <message name="GetWarehouseReceiptLines">
+// <part name="parameters" element="tns:GetWarehouseReceiptLines"/>
+// </message>
+// <message name="GetWarehouseReceiptLines_Result">
+// <part name="parameters" element="tns:GetWarehouseReceiptLines_Result"/>
+// </message>
+// <message name="GetWarehouseShipmentHeaders">
+// <part name="parameters" element="tns:GetWarehouseShipmentHeaders"/>
+// </message>
+// <message name="GetWarehouseShipmentHeaders_Result">
+// <part name="parameters" element="tns:GetWarehouseShipmentHeaders_Result"/>
+// </message>
+// <message name="GetWarehouseShipmentLines">
+// <part name="parameters" element="tns:GetWarehouseShipmentLines"/>
+// </message>
+// <message name="GetWarehouseShipmentLines_Result">
+// <part name="parameters" element="tns:GetWarehouseShipmentLines_Result"/>
+// </message>
+// <message name="HandheldScanSearch">
+// <part name="parameters" element="tns:HandheldScanSearch"/>
+// </message>
+// <message name="HandheldScanSearch_Result">
+// <part name="parameters" element="tns:HandheldScanSearch_Result"/>
+// </message>
+// <message name="IsDirectTOPOUpdatedAndPosted">
+// <part name="parameters" element="tns:IsDirectTOPOUpdatedAndPosted"/>
+// </message>
+// <message name="IsDirectTOPOUpdatedAndPosted_Result">
+// <part name="parameters" element="tns:IsDirectTOPOUpdatedAndPosted_Result"/>
+// </message>
+// <message name="LocationBinMandatory">
+// <part name="parameters" element="tns:LocationBinMandatory"/>
+// </message>
+// <message name="LocationBinMandatory_Result">
+// <part name="parameters" element="tns:LocationBinMandatory_Result"/>
+// </message>
+// <message name="Login">
+// <part name="parameters" element="tns:Login"/>
+// </message>
+// <message name="Login_Result">
+// <part name="parameters" element="tns:Login_Result"/>
+// </message>
+// <message name="MaxHandheldScan">
+// <part name="parameters" element="tns:MaxHandheldScan"/>
+// </message>
+// <message name="MaxHandheldScan_Result">
+// <part name="parameters" element="tns:MaxHandheldScan_Result"/>
+// </message>
+// <message name="PickTransferHeaderPostReceipt">
+// <part name="parameters" element="tns:PickTransferHeaderPostReceipt"/>
+// </message>
+// <message name="PickTransferHeaderPostReceipt_Result">
+// <part name="parameters" element="tns:PickTransferHeaderPostReceipt_Result"/>
+// </message>
+// <message name="PickTransferLineCreateUpdate">
+// <part name="parameters" element="tns:PickTransferLineCreateUpdate"/>
+// </message>
+// <message name="PickTransferLineCreateUpdate_Result">
+// <part name="parameters" element="tns:PickTransferLineCreateUpdate_Result"/>
+// </message>
+// <message name="PickTransferLineReceive">
+// <part name="parameters" element="tns:PickTransferLineReceive"/>
+// </message>
+// <message name="PickTransferLineReceive_Result">
+// <part name="parameters" element="tns:PickTransferLineReceive_Result"/>
+// </message>
+// <message name="Ping">
+// <part name="parameters" element="tns:Ping"/>
+// </message>
+// <message name="Ping_Result">
+// <part name="parameters" element="tns:Ping_Result"/>
+// </message>
+// <message name="PostHandheldScanBinToBin">
+// <part name="parameters" element="tns:PostHandheldScanBinToBin"/>
+// </message>
+// <message name="PostHandheldScanBinToBin_Result">
+// <part name="parameters" element="tns:PostHandheldScanBinToBin_Result"/>
+// </message>
+// <message name="PostHandheldScanPhysInv">
+// <part name="parameters" element="tns:PostHandheldScanPhysInv"/>
+// </message>
+// <message name="PostHandheldScanPhysInv_Result">
+// <part name="parameters" element="tns:PostHandheldScanPhysInv_Result"/>
+// </message>
+// <message name="PostHandheldScan">
+// <part name="parameters" element="tns:PostHandheldScan"/>
+// </message>
+// <message name="PostHandheldScan_Result">
+// <part name="parameters" element="tns:PostHandheldScan_Result"/>
+// </message>
+// <message name="PurchaseHeaderCreate">
+// <part name="parameters" element="tns:PurchaseHeaderCreate"/>
+// </message>
+// <message name="PurchaseHeaderCreate_Result">
+// <part name="parameters" element="tns:PurchaseHeaderCreate_Result"/>
+// </message>
+// <message name="PurchaseHeaderPost">
+// <part name="parameters" element="tns:PurchaseHeaderPost"/>
+// </message>
+// <message name="PurchaseHeaderPost_Result">
+// <part name="parameters" element="tns:PurchaseHeaderPost_Result"/>
+// </message>
+// <message name="PurchaseHeaderRelease">
+// <part name="parameters" element="tns:PurchaseHeaderRelease"/>
+// </message>
+// <message name="PurchaseHeaderRelease_Result">
+// <part name="parameters" element="tns:PurchaseHeaderRelease_Result"/>
+// </message>
+// <message name="PurchaseLineCreateUpdate">
+// <part name="parameters" element="tns:PurchaseLineCreateUpdate"/>
+// </message>
+// <message name="PurchaseLineCreateUpdate_Result">
+// <part name="parameters" element="tns:PurchaseLineCreateUpdate_Result"/>
+// </message>
+// <message name="PurchaseLineReceive">
+// <part name="parameters" element="tns:PurchaseLineReceive"/>
+// </message>
+// <message name="PurchaseLineReceive_Result">
+// <part name="parameters" element="tns:PurchaseLineReceive_Result"/>
+// </message>
+// <message name="PurchaseZeroQtyToReceiveShip">
+// <part name="parameters" element="tns:PurchaseZeroQtyToReceiveShip"/>
+// </message>
+// <message name="PurchaseZeroQtyToReceiveShip_Result">
+// <part name="parameters" element="tns:PurchaseZeroQtyToReceiveShip_Result"/>
+// </message>
+// <message name="PutAwayTransferHeaderPostReceipt">
+// <part name="parameters" element="tns:PutAwayTransferHeaderPostReceipt"/>
+// </message>
+// <message name="PutAwayTransferHeaderPostReceipt_Result">
+// <part name="parameters" element="tns:PutAwayTransferHeaderPostReceipt_Result"/>
+// </message>
+// <message name="PutAwayTransferLineCreateUpdate">
+// <part name="parameters" element="tns:PutAwayTransferLineCreateUpdate"/>
+// </message>
+// <message name="PutAwayTransferLineCreateUpdate_Result">
+// <part name="parameters" element="tns:PutAwayTransferLineCreateUpdate_Result"/>
+// </message>
+// <message name="PutAwayTransferLineReceive">
+// <part name="parameters" element="tns:PutAwayTransferLineReceive"/>
+// </message>
+// <message name="PutAwayTransferLineReceive_Result">
+// <part name="parameters" element="tns:PutAwayTransferLineReceive_Result"/>
+// </message>
+// <message name="ReopenTransferOrder">
+// <part name="parameters" element="tns:ReopenTransferOrder"/>
+// </message>
+// <message name="ReopenTransferOrder_Result">
+// <part name="parameters" element="tns:ReopenTransferOrder_Result"/>
+// </message>
+// <message name="ResetPorcessingDirectTOField">
+// <part name="parameters" element="tns:ResetPorcessingDirectTOField"/>
+// </message>
+// <message name="ResetPorcessingDirectTOField_Result">
+// <part name="parameters" element="tns:ResetPorcessingDirectTOField_Result"/>
+// </message>
+// <message name="SalesHeaderCreate">
+// <part name="parameters" element="tns:SalesHeaderCreate"/>
+// </message>
+// <message name="SalesHeaderCreate_Result">
+// <part name="parameters" element="tns:SalesHeaderCreate_Result"/>
+// </message>
+// <message name="SalesHeaderPost">
+// <part name="parameters" element="tns:SalesHeaderPost"/>
+// </message>
+// <message name="SalesHeaderPost_Result">
+// <part name="parameters" element="tns:SalesHeaderPost_Result"/>
+// </message>
+// <message name="SalesHeaderRelease">
+// <part name="parameters" element="tns:SalesHeaderRelease"/>
+// </message>
+// <message name="SalesHeaderRelease_Result">
+// <part name="parameters" element="tns:SalesHeaderRelease_Result"/>
+// </message>
+// <message name="SalesLineCreateUpdate">
+// <part name="parameters" element="tns:SalesLineCreateUpdate"/>
+// </message>
+// <message name="SalesLineCreateUpdate_Result">
+// <part name="parameters" element="tns:SalesLineCreateUpdate_Result"/>
+// </message>
+// <message name="SalesLineShip">
+// <part name="parameters" element="tns:SalesLineShip"/>
+// </message>
+// <message name="SalesLineShip_Result">
+// <part name="parameters" element="tns:SalesLineShip_Result"/>
+// </message>
+// <message name="SalesZeroQtyToShipReceive">
+// <part name="parameters" element="tns:SalesZeroQtyToShipReceive"/>
+// </message>
+// <message name="SalesZeroQtyToShipReceive_Result">
+// <part name="parameters" element="tns:SalesZeroQtyToShipReceive_Result"/>
+// </message>
+// <message name="SelectPOForDirectTO">
+// <part name="parameters" element="tns:SelectPOForDirectTO"/>
+// </message>
+// <message name="SelectPOForDirectTO_Result">
+// <part name="parameters" element="tns:SelectPOForDirectTO_Result"/>
+// </message>
+// <message name="ToJsonString">
+// <part name="parameters" element="tns:ToJsonString"/>
+// </message>
+// <message name="ToJsonString_Result">
+// <part name="parameters" element="tns:ToJsonString_Result"/>
+// </message>
+// <message name="TransferHeaderCreate">
+// <part name="parameters" element="tns:TransferHeaderCreate"/>
+// </message>
+// <message name="TransferHeaderCreate_Result">
+// <part name="parameters" element="tns:TransferHeaderCreate_Result"/>
+// </message>
+// <message name="TransferHeaderPostReceipt">
+// <part name="parameters" element="tns:TransferHeaderPostReceipt"/>
+// </message>
+// <message name="TransferHeaderPostReceipt_Result">
+// <part name="parameters" element="tns:TransferHeaderPostReceipt_Result"/>
+// </message>
+// <message name="TransferHeaderPostShipment">
+// <part name="parameters" element="tns:TransferHeaderPostShipment"/>
+// </message>
+// <message name="TransferHeaderPostShipment_Result">
+// <part name="parameters" element="tns:TransferHeaderPostShipment_Result"/>
+// </message>
+// <message name="TransferHeaderRelease">
+// <part name="parameters" element="tns:TransferHeaderRelease"/>
+// </message>
+// <message name="TransferHeaderRelease_Result">
+// <part name="parameters" element="tns:TransferHeaderRelease_Result"/>
+// </message>
+// <message name="TransferLineCreateUpdate">
+// <part name="parameters" element="tns:TransferLineCreateUpdate"/>
+// </message>
+// <message name="TransferLineCreateUpdate_Result">
+// <part name="parameters" element="tns:TransferLineCreateUpdate_Result"/>
+// </message>
+// <message name="TransferLineReceive">
+// <part name="parameters" element="tns:TransferLineReceive"/>
+// </message>
+// <message name="TransferLineReceive_Result">
+// <part name="parameters" element="tns:TransferLineReceive_Result"/>
+// </message>
+// <message name="TransferLineShip">
+// <part name="parameters" element="tns:TransferLineShip"/>
+// </message>
+// <message name="TransferLineShip_Result">
+// <part name="parameters" element="tns:TransferLineShip_Result"/>
+// </message>
+// <message name="TransferZeroQtyToReceive">
+// <part name="parameters" element="tns:TransferZeroQtyToReceive"/>
+// </message>
+// <message name="TransferZeroQtyToReceive_Result">
+// <part name="parameters" element="tns:TransferZeroQtyToReceive_Result"/>
+// </message>
+// <message name="TransferZeroQtyToShip">
+// <part name="parameters" element="tns:TransferZeroQtyToShip"/>
+// </message>
+// <message name="TransferZeroQtyToShip_Result">
+// <part name="parameters" element="tns:TransferZeroQtyToShip_Result"/>
+// </message>
+// <message name="ValidateBinOptimized">
+// <part name="parameters" element="tns:ValidateBinOptimized"/>
+// </message>
+// <message name="ValidateBinOptimized_Result">
+// <part name="parameters" element="tns:ValidateBinOptimized_Result"/>
+// </message>
+// <message name="ValidateBin">
+// <part name="parameters" element="tns:ValidateBin"/>
+// </message>
+// <message name="ValidateBin_Result">
+// <part name="parameters" element="tns:ValidateBin_Result"/>
+// </message>
+// <message name="ValidateLotNoOptimized">
+// <part name="parameters" element="tns:ValidateLotNoOptimized"/>
+// </message>
+// <message name="ValidateLotNoOptimized_Result">
+// <part name="parameters" element="tns:ValidateLotNoOptimized_Result"/>
+// </message>
+// <message name="ValidateLot">
+// <part name="parameters" element="tns:ValidateLot"/>
+// </message>
+// <message name="ValidateLot_Result">
+// <part name="parameters" element="tns:ValidateLot_Result"/>
+// </message>
+// <message name="ValidateMoveByItem">
+// <part name="parameters" element="tns:ValidateMoveByItem"/>
+// </message>
+// <message name="ValidateMoveByItem_Result">
+// <part name="parameters" element="tns:ValidateMoveByItem_Result"/>
+// </message>
+// <message name="ValidateUniqueSerialRequest">
+// <part name="parameters" element="tns:ValidateUniqueSerialRequest"/>
+// </message>
+// <message name="ValidateUniqueSerialRequest_Result">
+// <part name="parameters" element="tns:ValidateUniqueSerialRequest_Result"/>
+// </message>
+// <message name="WarehouseReceiptPost">
+// <part name="parameters" element="tns:WarehouseReceiptPost"/>
+// </message>
+// <message name="WarehouseReceiptPost_Result">
+// <part name="parameters" element="tns:WarehouseReceiptPost_Result"/>
+// </message>
+// <message name="WarehouseReceiptUpdate">
+// <part name="parameters" element="tns:WarehouseReceiptUpdate"/>
+// </message>
+// <message name="WarehouseReceiptUpdate_Result">
+// <part name="parameters" element="tns:WarehouseReceiptUpdate_Result"/>
+// </message>
+// <message name="WarehouseShipmentPost">
+// <part name="parameters" element="tns:WarehouseShipmentPost"/>
+// </message>
+// <message name="WarehouseShipmentPost_Result">
+// <part name="parameters" element="tns:WarehouseShipmentPost_Result"/>
+// </message>
+// <message name="WarehouseShipmentUpdate">
+// <part name="parameters" element="tns:WarehouseShipmentUpdate"/>
+// </message>
+// <message name="WarehouseShipmentUpdate_Result">
+// <part name="parameters" element="tns:WarehouseShipmentUpdate_Result"/>
+// </message>
+// <message name="test1">
+// <part name="parameters" element="tns:test1"/>
+// </message>
+// <message name="test1_Result">
+// <part name="parameters" element="tns:test1_Result"/>
+// </message>
+// <portType name="WMSOnlineFunctions_Port">
+// <operation name="BatchLocationBinMandatory">
+// <input name="BatchLocationBinMandatory" message="tns:BatchLocationBinMandatory"/>
+// <output name="BatchLocationBinMandatory_Result" message="tns:BatchLocationBinMandatory_Result"/>
+// </operation>
+// <operation name="CreateInfoHandheldScan2">
+// <input name="CreateInfoHandheldScan2" message="tns:CreateInfoHandheldScan2"/>
+// <output name="CreateInfoHandheldScan2_Result" message="tns:CreateInfoHandheldScan2_Result"/>
+// </operation>
+// <operation name="CreateInfoHandheldScan">
+// <input name="CreateInfoHandheldScan" message="tns:CreateInfoHandheldScan"/>
+// <output name="CreateInfoHandheldScan_Result" message="tns:CreateInfoHandheldScan_Result"/>
+// </operation>
+// <operation name="DeleteAnyHandheldScan">
+// <input name="DeleteAnyHandheldScan" message="tns:DeleteAnyHandheldScan"/>
+// <output name="DeleteAnyHandheldScan_Result" message="tns:DeleteAnyHandheldScan_Result"/>
+// </operation>
+// <operation name="DeleteHandheldScanWithBin">
+// <input name="DeleteHandheldScanWithBin" message="tns:DeleteHandheldScanWithBin"/>
+// <output name="DeleteHandheldScanWithBin_Result" message="tns:DeleteHandheldScanWithBin_Result"/>
+// </operation>
+// <operation name="DeleteHandheldScan">
+// <input name="DeleteHandheldScan" message="tns:DeleteHandheldScan"/>
+// <output name="DeleteHandheldScan_Result" message="tns:DeleteHandheldScan_Result"/>
+// </operation>
+// <operation name="DeleteTransferOrder">
+// <input name="DeleteTransferOrder" message="tns:DeleteTransferOrder"/>
+// <output name="DeleteTransferOrder_Result" message="tns:DeleteTransferOrder_Result"/>
+// </operation>
+// <operation name="DirectTransferHeaderCreate">
+// <input name="DirectTransferHeaderCreate" message="tns:DirectTransferHeaderCreate"/>
+// <output name="DirectTransferHeaderCreate_Result" message="tns:DirectTransferHeaderCreate_Result"/>
+// </operation>
+// <operation name="DirectTransferHeaderPostShipment">
+// <input name="DirectTransferHeaderPostShipment" message="tns:DirectTransferHeaderPostShipment"/>
+// <output name="DirectTransferHeaderPostShipment_Result" message="tns:DirectTransferHeaderPostShipment_Result"/>
+// </operation>
+// <operation name="DirectTransferHeaderRelease">
+// <input name="DirectTransferHeaderRelease" message="tns:DirectTransferHeaderRelease"/>
+// <output name="DirectTransferHeaderRelease_Result" message="tns:DirectTransferHeaderRelease_Result"/>
+// </operation>
+// <operation name="DirectTransferLineCreateUpdate">
+// <input name="DirectTransferLineCreateUpdate" message="tns:DirectTransferLineCreateUpdate"/>
+// <output name="DirectTransferLineCreateUpdate_Result" message="tns:DirectTransferLineCreateUpdate_Result"/>
+// </operation>
+// <operation name="DirectTransferLineShip">
+// <input name="DirectTransferLineShip" message="tns:DirectTransferLineShip"/>
+// <output name="DirectTransferLineShip_Result" message="tns:DirectTransferLineShip_Result"/>
+// </operation>
+// <operation name="DirectTransferPurchaseHeaderPost">
+// <input name="DirectTransferPurchaseHeaderPost" message="tns:DirectTransferPurchaseHeaderPost"/>
+// <output name="DirectTransferPurchaseHeaderPost_Result" message="tns:DirectTransferPurchaseHeaderPost_Result"/>
+// </operation>
+// <operation name="DirectTransferZeroQtyToShip">
+// <input name="DirectTransferZeroQtyToShip" message="tns:DirectTransferZeroQtyToShip"/>
+// <output name="DirectTransferZeroQtyToShip_Result" message="tns:DirectTransferZeroQtyToShip_Result"/>
+// </operation>
+// <operation name="DirectedPickRegister">
+// <input name="DirectedPickRegister" message="tns:DirectedPickRegister"/>
+// <output name="DirectedPickRegister_Result" message="tns:DirectedPickRegister_Result"/>
+// </operation>
+// <operation name="DirectedPickUpdate">
+// <input name="DirectedPickUpdate" message="tns:DirectedPickUpdate"/>
+// <output name="DirectedPickUpdate_Result" message="tns:DirectedPickUpdate_Result"/>
+// </operation>
+// <operation name="DirectedPutAwayRegister">
+// <input name="DirectedPutAwayRegister" message="tns:DirectedPutAwayRegister"/>
+// <output name="DirectedPutAwayRegister_Result" message="tns:DirectedPutAwayRegister_Result"/>
+// </operation>
+// <operation name="DirectedPutAwayUpdate">
+// <input name="DirectedPutAwayUpdate" message="tns:DirectedPutAwayUpdate"/>
+// <output name="DirectedPutAwayUpdate_Result" message="tns:DirectedPutAwayUpdate_Result"/>
+// </operation>
+// <operation name="GetBarcodeQuery">
+// <input name="GetBarcodeQuery" message="tns:GetBarcodeQuery"/>
+// <output name="GetBarcodeQuery_Result" message="tns:GetBarcodeQuery_Result"/>
+// </operation>
+// <operation name="GetBinQtyOnHand">
+// <input name="GetBinQtyOnHand" message="tns:GetBinQtyOnHand"/>
+// <output name="GetBinQtyOnHand_Result" message="tns:GetBinQtyOnHand_Result"/>
+// </operation>
+// <operation name="GetCustomers">
+// <input name="GetCustomers" message="tns:GetCustomers"/>
+// <output name="GetCustomers_Result" message="tns:GetCustomers_Result"/>
+// </operation>
+// <operation name="GetDirectPurchaseOrderInfo">
+// <input name="GetDirectPurchaseOrderInfo" message="tns:GetDirectPurchaseOrderInfo"/>
+// <output name="GetDirectPurchaseOrderInfo_Result" message="tns:GetDirectPurchaseOrderInfo_Result"/>
+// </operation>
+// <operation name="GetDirectedPhysInventoryLines">
+// <input name="GetDirectedPhysInventoryLines" message="tns:GetDirectedPhysInventoryLines"/>
+// <output name="GetDirectedPhysInventoryLines_Result" message="tns:GetDirectedPhysInventoryLines_Result"/>
+// </operation>
+// <operation name="GetDiscountedPrice">
+// <input name="GetDiscountedPrice" message="tns:GetDiscountedPrice"/>
+// <output name="GetDiscountedPrice_Result" message="tns:GetDiscountedPrice_Result"/>
+// </operation>
+// <operation name="GetHandheldLocationSecurity">
+// <input name="GetHandheldLocationSecurity" message="tns:GetHandheldLocationSecurity"/>
+// <output name="GetHandheldLocationSecurity_Result" message="tns:GetHandheldLocationSecurity_Result"/>
+// </operation>
+// <operation name="GetHandheldScan">
+// <input name="GetHandheldScan" message="tns:GetHandheldScan"/>
+// <output name="GetHandheldScan_Result" message="tns:GetHandheldScan_Result"/>
+// </operation>
+// <operation name="GetItemInfoFromQRCode">
+// <input name="GetItemInfoFromQRCode" message="tns:GetItemInfoFromQRCode"/>
+// <output name="GetItemInfoFromQRCode_Result" message="tns:GetItemInfoFromQRCode_Result"/>
+// </operation>
+// <operation name="GetItemJournalBatches">
+// <input name="GetItemJournalBatches" message="tns:GetItemJournalBatches"/>
+// <output name="GetItemJournalBatches_Result" message="tns:GetItemJournalBatches_Result"/>
+// </operation>
+// <operation name="GetItemQtyOnHandAdv">
+// <input name="GetItemQtyOnHandAdv" message="tns:GetItemQtyOnHandAdv"/>
+// <output name="GetItemQtyOnHandAdv_Result" message="tns:GetItemQtyOnHandAdv_Result"/>
+// </operation>
+// <operation name="GetItemQtyOnHand">
+// <input name="GetItemQtyOnHand" message="tns:GetItemQtyOnHand"/>
+// <output name="GetItemQtyOnHand_Result" message="tns:GetItemQtyOnHand_Result"/>
+// </operation>
+// <operation name="GetJournalBatchSessions">
+// <input name="GetJournalBatchSessions" message="tns:GetJournalBatchSessions"/>
+// <output name="GetJournalBatchSessions_Result" message="tns:GetJournalBatchSessions_Result"/>
+// </operation>
+// <operation name="GetLotQtyOnHand">
+// <input name="GetLotQtyOnHand" message="tns:GetLotQtyOnHand"/>
+// <output name="GetLotQtyOnHand_Result" message="tns:GetLotQtyOnHand_Result"/>
+// </operation>
+// <operation name="GetPhysInvQtyCalculated">
+// <input name="GetPhysInvQtyCalculated" message="tns:GetPhysInvQtyCalculated"/>
+// <output name="GetPhysInvQtyCalculated_Result" message="tns:GetPhysInvQtyCalculated_Result"/>
+// </operation>
+// <operation name="GetPhysInvQtyScannedBase">
+// <input name="GetPhysInvQtyScannedBase" message="tns:GetPhysInvQtyScannedBase"/>
+// <output name="GetPhysInvQtyScannedBase_Result" message="tns:GetPhysInvQtyScannedBase_Result"/>
+// </operation>
+// <operation name="GetPurchaseHeaders">
+// <input name="GetPurchaseHeaders" message="tns:GetPurchaseHeaders"/>
+// <output name="GetPurchaseHeaders_Result" message="tns:GetPurchaseHeaders_Result"/>
+// </operation>
+// <operation name="GetRetailPricePerBarcode">
+// <input name="GetRetailPricePerBarcode" message="tns:GetRetailPricePerBarcode"/>
+// <output name="GetRetailPricePerBarcode_Result" message="tns:GetRetailPricePerBarcode_Result"/>
+// </operation>
+// <operation name="GetRetailPrice">
+// <input name="GetRetailPrice" message="tns:GetRetailPrice"/>
+// <output name="GetRetailPrice_Result" message="tns:GetRetailPrice_Result"/>
+// </operation>
+// <operation name="GetSalesAndDiscountedPrices">
+// <input name="GetSalesAndDiscountedPrices" message="tns:GetSalesAndDiscountedPrices"/>
+// <output name="GetSalesAndDiscountedPrices_Result" message="tns:GetSalesAndDiscountedPrices_Result"/>
+// </operation>
+// <operation name="GetSalesHeaders">
+// <input name="GetSalesHeaders" message="tns:GetSalesHeaders"/>
+// <output name="GetSalesHeaders_Result" message="tns:GetSalesHeaders_Result"/>
+// </operation>
+// <operation name="GetSalesHeaders_239473069">
+// <input name="GetSalesHeaders_239473069" message="tns:GetSalesHeaders_239473069"/>
+// <output name="GetSalesHeaders_239473069_Result" message="tns:GetSalesHeaders_239473069_Result"/>
+// </operation>
+// <operation name="GetSalesPrice">
+// <input name="GetSalesPrice" message="tns:GetSalesPrice"/>
+// <output name="GetSalesPrice_Result" message="tns:GetSalesPrice_Result"/>
+// </operation>
+// <operation name="GetTransferHeaders">
+// <input name="GetTransferHeaders" message="tns:GetTransferHeaders"/>
+// <output name="GetTransferHeaders_Result" message="tns:GetTransferHeaders_Result"/>
+// </operation>
+// <operation name="GetUsers">
+// <input name="GetUsers" message="tns:GetUsers"/>
+// <output name="GetUsers_Result" message="tns:GetUsers_Result"/>
+// </operation>
+// <operation name="GetVendors">
+// <input name="GetVendors" message="tns:GetVendors"/>
+// <output name="GetVendors_Result" message="tns:GetVendors_Result"/>
+// </operation>
+// <operation name="GetWarehouseActivityHeaders">
+// <input name="GetWarehouseActivityHeaders" message="tns:GetWarehouseActivityHeaders"/>
+// <output name="GetWarehouseActivityHeaders_Result" message="tns:GetWarehouseActivityHeaders_Result"/>
+// </operation>
+// <operation name="GetWarehouseActivityLines">
+// <input name="GetWarehouseActivityLines" message="tns:GetWarehouseActivityLines"/>
+// <output name="GetWarehouseActivityLines_Result" message="tns:GetWarehouseActivityLines_Result"/>
+// </operation>
+// <operation name="GetWarehouseJournalBatches">
+// <input name="GetWarehouseJournalBatches" message="tns:GetWarehouseJournalBatches"/>
+// <output name="GetWarehouseJournalBatches_Result" message="tns:GetWarehouseJournalBatches_Result"/>
+// </operation>
+// <operation name="GetWarehouseReceiptHeaders">
+// <input name="GetWarehouseReceiptHeaders" message="tns:GetWarehouseReceiptHeaders"/>
+// <output name="GetWarehouseReceiptHeaders_Result" message="tns:GetWarehouseReceiptHeaders_Result"/>
+// </operation>
+// <operation name="GetWarehouseReceiptLines">
+// <input name="GetWarehouseReceiptLines" message="tns:GetWarehouseReceiptLines"/>
+// <output name="GetWarehouseReceiptLines_Result" message="tns:GetWarehouseReceiptLines_Result"/>
+// </operation>
+// <operation name="GetWarehouseShipmentHeaders">
+// <input name="GetWarehouseShipmentHeaders" message="tns:GetWarehouseShipmentHeaders"/>
+// <output name="GetWarehouseShipmentHeaders_Result" message="tns:GetWarehouseShipmentHeaders_Result"/>
+// </operation>
+// <operation name="GetWarehouseShipmentLines">
+// <input name="GetWarehouseShipmentLines" message="tns:GetWarehouseShipmentLines"/>
+// <output name="GetWarehouseShipmentLines_Result" message="tns:GetWarehouseShipmentLines_Result"/>
+// </operation>
+// <operation name="HandheldScanSearch">
+// <input name="HandheldScanSearch" message="tns:HandheldScanSearch"/>
+// <output name="HandheldScanSearch_Result" message="tns:HandheldScanSearch_Result"/>
+// </operation>
+// <operation name="IsDirectTOPOUpdatedAndPosted">
+// <input name="IsDirectTOPOUpdatedAndPosted" message="tns:IsDirectTOPOUpdatedAndPosted"/>
+// <output name="IsDirectTOPOUpdatedAndPosted_Result" message="tns:IsDirectTOPOUpdatedAndPosted_Result"/>
+// </operation>
+// <operation name="LocationBinMandatory">
+// <input name="LocationBinMandatory" message="tns:LocationBinMandatory"/>
+// <output name="LocationBinMandatory_Result" message="tns:LocationBinMandatory_Result"/>
+// </operation>
+// <operation name="Login">
+// <input name="Login" message="tns:Login"/>
+// <output name="Login_Result" message="tns:Login_Result"/>
+// </operation>
+// <operation name="MaxHandheldScan">
+// <input name="MaxHandheldScan" message="tns:MaxHandheldScan"/>
+// <output name="MaxHandheldScan_Result" message="tns:MaxHandheldScan_Result"/>
+// </operation>
+// <operation name="PickTransferHeaderPostReceipt">
+// <input name="PickTransferHeaderPostReceipt" message="tns:PickTransferHeaderPostReceipt"/>
+// <output name="PickTransferHeaderPostReceipt_Result" message="tns:PickTransferHeaderPostReceipt_Result"/>
+// </operation>
+// <operation name="PickTransferLineCreateUpdate">
+// <input name="PickTransferLineCreateUpdate" message="tns:PickTransferLineCreateUpdate"/>
+// <output name="PickTransferLineCreateUpdate_Result" message="tns:PickTransferLineCreateUpdate_Result"/>
+// </operation>
+// <operation name="PickTransferLineReceive">
+// <input name="PickTransferLineReceive" message="tns:PickTransferLineReceive"/>
+// <output name="PickTransferLineReceive_Result" message="tns:PickTransferLineReceive_Result"/>
+// </operation>
+// <operation name="Ping">
+// <input name="Ping" message="tns:Ping"/>
+// <output name="Ping_Result" message="tns:Ping_Result"/>
+// </operation>
+// <operation name="PostHandheldScanBinToBin">
+// <input name="PostHandheldScanBinToBin" message="tns:PostHandheldScanBinToBin"/>
+// <output name="PostHandheldScanBinToBin_Result" message="tns:PostHandheldScanBinToBin_Result"/>
+// </operation>
+// <operation name="PostHandheldScanPhysInv">
+// <input name="PostHandheldScanPhysInv" message="tns:PostHandheldScanPhysInv"/>
+// <output name="PostHandheldScanPhysInv_Result" message="tns:PostHandheldScanPhysInv_Result"/>
+// </operation>
+// <operation name="PostHandheldScan">
+// <input name="PostHandheldScan" message="tns:PostHandheldScan"/>
+// <output name="PostHandheldScan_Result" message="tns:PostHandheldScan_Result"/>
+// </operation>
+// <operation name="PurchaseHeaderCreate">
+// <input name="PurchaseHeaderCreate" message="tns:PurchaseHeaderCreate"/>
+// <output name="PurchaseHeaderCreate_Result" message="tns:PurchaseHeaderCreate_Result"/>
+// </operation>
+// <operation name="PurchaseHeaderPost">
+// <input name="PurchaseHeaderPost" message="tns:PurchaseHeaderPost"/>
+// <output name="PurchaseHeaderPost_Result" message="tns:PurchaseHeaderPost_Result"/>
+// </operation>
+// <operation name="PurchaseHeaderRelease">
+// <input name="PurchaseHeaderRelease" message="tns:PurchaseHeaderRelease"/>
+// <output name="PurchaseHeaderRelease_Result" message="tns:PurchaseHeaderRelease_Result"/>
+// </operation>
+// <operation name="PurchaseLineCreateUpdate">
+// <input name="PurchaseLineCreateUpdate" message="tns:PurchaseLineCreateUpdate"/>
+// <output name="PurchaseLineCreateUpdate_Result" message="tns:PurchaseLineCreateUpdate_Result"/>
+// </operation>
+// <operation name="PurchaseLineReceive">
+// <input name="PurchaseLineReceive" message="tns:PurchaseLineReceive"/>
+// <output name="PurchaseLineReceive_Result" message="tns:PurchaseLineReceive_Result"/>
+// </operation>
+// <operation name="PurchaseZeroQtyToReceiveShip">
+// <input name="PurchaseZeroQtyToReceiveShip" message="tns:PurchaseZeroQtyToReceiveShip"/>
+// <output name="PurchaseZeroQtyToReceiveShip_Result" message="tns:PurchaseZeroQtyToReceiveShip_Result"/>
+// </operation>
+// <operation name="PutAwayTransferHeaderPostReceipt">
+// <input name="PutAwayTransferHeaderPostReceipt" message="tns:PutAwayTransferHeaderPostReceipt"/>
+// <output name="PutAwayTransferHeaderPostReceipt_Result" message="tns:PutAwayTransferHeaderPostReceipt_Result"/>
+// </operation>
+// <operation name="PutAwayTransferLineCreateUpdate">
+// <input name="PutAwayTransferLineCreateUpdate" message="tns:PutAwayTransferLineCreateUpdate"/>
+// <output name="PutAwayTransferLineCreateUpdate_Result" message="tns:PutAwayTransferLineCreateUpdate_Result"/>
+// </operation>
+// <operation name="PutAwayTransferLineReceive">
+// <input name="PutAwayTransferLineReceive" message="tns:PutAwayTransferLineReceive"/>
+// <output name="PutAwayTransferLineReceive_Result" message="tns:PutAwayTransferLineReceive_Result"/>
+// </operation>
+// <operation name="ReopenTransferOrder">
+// <input name="ReopenTransferOrder" message="tns:ReopenTransferOrder"/>
+// <output name="ReopenTransferOrder_Result" message="tns:ReopenTransferOrder_Result"/>
+// </operation>
+// <operation name="ResetPorcessingDirectTOField">
+// <input name="ResetPorcessingDirectTOField" message="tns:ResetPorcessingDirectTOField"/>
+// <output name="ResetPorcessingDirectTOField_Result" message="tns:ResetPorcessingDirectTOField_Result"/>
+// </operation>
+// <operation name="SalesHeaderCreate">
+// <input name="SalesHeaderCreate" message="tns:SalesHeaderCreate"/>
+// <output name="SalesHeaderCreate_Result" message="tns:SalesHeaderCreate_Result"/>
+// </operation>
+// <operation name="SalesHeaderPost">
+// <input name="SalesHeaderPost" message="tns:SalesHeaderPost"/>
+// <output name="SalesHeaderPost_Result" message="tns:SalesHeaderPost_Result"/>
+// </operation>
+// <operation name="SalesHeaderRelease">
+// <input name="SalesHeaderRelease" message="tns:SalesHeaderRelease"/>
+// <output name="SalesHeaderRelease_Result" message="tns:SalesHeaderRelease_Result"/>
+// </operation>
+// <operation name="SalesLineCreateUpdate">
+// <input name="SalesLineCreateUpdate" message="tns:SalesLineCreateUpdate"/>
+// <output name="SalesLineCreateUpdate_Result" message="tns:SalesLineCreateUpdate_Result"/>
+// </operation>
+// <operation name="SalesLineShip">
+// <input name="SalesLineShip" message="tns:SalesLineShip"/>
+// <output name="SalesLineShip_Result" message="tns:SalesLineShip_Result"/>
+// </operation>
+// <operation name="SalesZeroQtyToShipReceive">
+// <input name="SalesZeroQtyToShipReceive" message="tns:SalesZeroQtyToShipReceive"/>
+// <output name="SalesZeroQtyToShipReceive_Result" message="tns:SalesZeroQtyToShipReceive_Result"/>
+// </operation>
+// <operation name="SelectPOForDirectTO">
+// <input name="SelectPOForDirectTO" message="tns:SelectPOForDirectTO"/>
+// <output name="SelectPOForDirectTO_Result" message="tns:SelectPOForDirectTO_Result"/>
+// </operation>
+// <operation name="ToJsonString">
+// <input name="ToJsonString" message="tns:ToJsonString"/>
+// <output name="ToJsonString_Result" message="tns:ToJsonString_Result"/>
+// </operation>
+// <operation name="TransferHeaderCreate">
+// <input name="TransferHeaderCreate" message="tns:TransferHeaderCreate"/>
+// <output name="TransferHeaderCreate_Result" message="tns:TransferHeaderCreate_Result"/>
+// </operation>
+// <operation name="TransferHeaderPostReceipt">
+// <input name="TransferHeaderPostReceipt" message="tns:TransferHeaderPostReceipt"/>
+// <output name="TransferHeaderPostReceipt_Result" message="tns:TransferHeaderPostReceipt_Result"/>
+// </operation>
+// <operation name="TransferHeaderPostShipment">
+// <input name="TransferHeaderPostShipment" message="tns:TransferHeaderPostShipment"/>
+// <output name="TransferHeaderPostShipment_Result" message="tns:TransferHeaderPostShipment_Result"/>
+// </operation>
+// <operation name="TransferHeaderRelease">
+// <input name="TransferHeaderRelease" message="tns:TransferHeaderRelease"/>
+// <output name="TransferHeaderRelease_Result" message="tns:TransferHeaderRelease_Result"/>
+// </operation>
+// <operation name="TransferLineCreateUpdate">
+// <input name="TransferLineCreateUpdate" message="tns:TransferLineCreateUpdate"/>
+// <output name="TransferLineCreateUpdate_Result" message="tns:TransferLineCreateUpdate_Result"/>
+// </operation>
+// <operation name="TransferLineReceive">
+// <input name="TransferLineReceive" message="tns:TransferLineReceive"/>
+// <output name="TransferLineReceive_Result" message="tns:TransferLineReceive_Result"/>
+// </operation>
+// <operation name="TransferLineShip">
+// <input name="TransferLineShip" message="tns:TransferLineShip"/>
+// <output name="TransferLineShip_Result" message="tns:TransferLineShip_Result"/>
+// </operation>
+// <operation name="TransferZeroQtyToReceive">
+// <input name="TransferZeroQtyToReceive" message="tns:TransferZeroQtyToReceive"/>
+// <output name="TransferZeroQtyToReceive_Result" message="tns:TransferZeroQtyToReceive_Result"/>
+// </operation>
+// <operation name="TransferZeroQtyToShip">
+// <input name="TransferZeroQtyToShip" message="tns:TransferZeroQtyToShip"/>
+// <output name="TransferZeroQtyToShip_Result" message="tns:TransferZeroQtyToShip_Result"/>
+// </operation>
+// <operation name="ValidateBinOptimized">
+// <input name="ValidateBinOptimized" message="tns:ValidateBinOptimized"/>
+// <output name="ValidateBinOptimized_Result" message="tns:ValidateBinOptimized_Result"/>
+// </operation>
+// <operation name="ValidateBin">
+// <input name="ValidateBin" message="tns:ValidateBin"/>
+// <output name="ValidateBin_Result" message="tns:ValidateBin_Result"/>
+// </operation>
+// <operation name="ValidateLotNoOptimized">
+// <input name="ValidateLotNoOptimized" message="tns:ValidateLotNoOptimized"/>
+// <output name="ValidateLotNoOptimized_Result" message="tns:ValidateLotNoOptimized_Result"/>
+// </operation>
+// <operation name="ValidateLot">
+// <input name="ValidateLot" message="tns:ValidateLot"/>
+// <output name="ValidateLot_Result" message="tns:ValidateLot_Result"/>
+// </operation>
+// <operation name="ValidateMoveByItem">
+// <input name="ValidateMoveByItem" message="tns:ValidateMoveByItem"/>
+// <output name="ValidateMoveByItem_Result" message="tns:ValidateMoveByItem_Result"/>
+// </operation>
+// <operation name="ValidateUniqueSerialRequest">
+// <input name="ValidateUniqueSerialRequest" message="tns:ValidateUniqueSerialRequest"/>
+// <output name="ValidateUniqueSerialRequest_Result" message="tns:ValidateUniqueSerialRequest_Result"/>
+// </operation>
+// <operation name="WarehouseReceiptPost">
+// <input name="WarehouseReceiptPost" message="tns:WarehouseReceiptPost"/>
+// <output name="WarehouseReceiptPost_Result" message="tns:WarehouseReceiptPost_Result"/>
+// </operation>
+// <operation name="WarehouseReceiptUpdate">
+// <input name="WarehouseReceiptUpdate" message="tns:WarehouseReceiptUpdate"/>
+// <output name="WarehouseReceiptUpdate_Result" message="tns:WarehouseReceiptUpdate_Result"/>
+// </operation>
+// <operation name="WarehouseShipmentPost">
+// <input name="WarehouseShipmentPost" message="tns:WarehouseShipmentPost"/>
+// <output name="WarehouseShipmentPost_Result" message="tns:WarehouseShipmentPost_Result"/>
+// </operation>
+// <operation name="WarehouseShipmentUpdate">
+// <input name="WarehouseShipmentUpdate" message="tns:WarehouseShipmentUpdate"/>
+// <output name="WarehouseShipmentUpdate_Result" message="tns:WarehouseShipmentUpdate_Result"/>
+// </operation>
+// <operation name="test1">
+// <input name="test1" message="tns:test1"/>
+// <output name="test1_Result" message="tns:test1_Result"/>
+// </operation>
+// </portType>
+// <binding name="WMSOnlineFunctions_Binding" type="tns:WMSOnlineFunctions_Port">
+// <binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" transport="http://schemas.xmlsoap.org/soap/http"/>
+// <operation name="BatchLocationBinMandatory">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:BatchLocationBinMandatory" style="document"/>
+// <input name="BatchLocationBinMandatory">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="BatchLocationBinMandatory_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="CreateInfoHandheldScan2">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:CreateInfoHandheldScan2" style="document"/>
+// <input name="CreateInfoHandheldScan2">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="CreateInfoHandheldScan2_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="CreateInfoHandheldScan">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:CreateInfoHandheldScan" style="document"/>
+// <input name="CreateInfoHandheldScan">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="CreateInfoHandheldScan_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DeleteAnyHandheldScan">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DeleteAnyHandheldScan" style="document"/>
+// <input name="DeleteAnyHandheldScan">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DeleteAnyHandheldScan_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DeleteHandheldScanWithBin">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DeleteHandheldScanWithBin" style="document"/>
+// <input name="DeleteHandheldScanWithBin">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DeleteHandheldScanWithBin_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DeleteHandheldScan">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DeleteHandheldScan" style="document"/>
+// <input name="DeleteHandheldScan">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DeleteHandheldScan_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DeleteTransferOrder">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DeleteTransferOrder" style="document"/>
+// <input name="DeleteTransferOrder">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DeleteTransferOrder_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectTransferHeaderCreate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectTransferHeaderCreate" style="document"/>
+// <input name="DirectTransferHeaderCreate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectTransferHeaderCreate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectTransferHeaderPostShipment">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectTransferHeaderPostShipment" style="document"/>
+// <input name="DirectTransferHeaderPostShipment">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectTransferHeaderPostShipment_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectTransferHeaderRelease">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectTransferHeaderRelease" style="document"/>
+// <input name="DirectTransferHeaderRelease">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectTransferHeaderRelease_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectTransferLineCreateUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectTransferLineCreateUpdate" style="document"/>
+// <input name="DirectTransferLineCreateUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectTransferLineCreateUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectTransferLineShip">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectTransferLineShip" style="document"/>
+// <input name="DirectTransferLineShip">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectTransferLineShip_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectTransferPurchaseHeaderPost">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectTransferPurchaseHeaderPost" style="document"/>
+// <input name="DirectTransferPurchaseHeaderPost">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectTransferPurchaseHeaderPost_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectTransferZeroQtyToShip">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectTransferZeroQtyToShip" style="document"/>
+// <input name="DirectTransferZeroQtyToShip">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectTransferZeroQtyToShip_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectedPickRegister">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectedPickRegister" style="document"/>
+// <input name="DirectedPickRegister">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectedPickRegister_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectedPickUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectedPickUpdate" style="document"/>
+// <input name="DirectedPickUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectedPickUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectedPutAwayRegister">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectedPutAwayRegister" style="document"/>
+// <input name="DirectedPutAwayRegister">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectedPutAwayRegister_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="DirectedPutAwayUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:DirectedPutAwayUpdate" style="document"/>
+// <input name="DirectedPutAwayUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="DirectedPutAwayUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetBarcodeQuery">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetBarcodeQuery" style="document"/>
+// <input name="GetBarcodeQuery">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetBarcodeQuery_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetBinQtyOnHand">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetBinQtyOnHand" style="document"/>
+// <input name="GetBinQtyOnHand">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetBinQtyOnHand_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetCustomers">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetCustomers" style="document"/>
+// <input name="GetCustomers">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetCustomers_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetDirectPurchaseOrderInfo">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetDirectPurchaseOrderInfo" style="document"/>
+// <input name="GetDirectPurchaseOrderInfo">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetDirectPurchaseOrderInfo_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetDirectedPhysInventoryLines">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetDirectedPhysInventoryLines" style="document"/>
+// <input name="GetDirectedPhysInventoryLines">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetDirectedPhysInventoryLines_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetDiscountedPrice">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetDiscountedPrice" style="document"/>
+// <input name="GetDiscountedPrice">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetDiscountedPrice_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetHandheldLocationSecurity">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetHandheldLocationSecurity" style="document"/>
+// <input name="GetHandheldLocationSecurity">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetHandheldLocationSecurity_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetHandheldScan">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetHandheldScan" style="document"/>
+// <input name="GetHandheldScan">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetHandheldScan_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetItemInfoFromQRCode">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetItemInfoFromQRCode" style="document"/>
+// <input name="GetItemInfoFromQRCode">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetItemInfoFromQRCode_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetItemJournalBatches">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetItemJournalBatches" style="document"/>
+// <input name="GetItemJournalBatches">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetItemJournalBatches_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetItemQtyOnHandAdv">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetItemQtyOnHandAdv" style="document"/>
+// <input name="GetItemQtyOnHandAdv">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetItemQtyOnHandAdv_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetItemQtyOnHand">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetItemQtyOnHand" style="document"/>
+// <input name="GetItemQtyOnHand">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetItemQtyOnHand_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetJournalBatchSessions">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetJournalBatchSessions" style="document"/>
+// <input name="GetJournalBatchSessions">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetJournalBatchSessions_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetLotQtyOnHand">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetLotQtyOnHand" style="document"/>
+// <input name="GetLotQtyOnHand">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetLotQtyOnHand_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetPhysInvQtyCalculated">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetPhysInvQtyCalculated" style="document"/>
+// <input name="GetPhysInvQtyCalculated">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetPhysInvQtyCalculated_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetPhysInvQtyScannedBase">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetPhysInvQtyScannedBase" style="document"/>
+// <input name="GetPhysInvQtyScannedBase">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetPhysInvQtyScannedBase_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetPurchaseHeaders">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetPurchaseHeaders" style="document"/>
+// <input name="GetPurchaseHeaders">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetPurchaseHeaders_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetRetailPricePerBarcode">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetRetailPricePerBarcode" style="document"/>
+// <input name="GetRetailPricePerBarcode">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetRetailPricePerBarcode_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetRetailPrice">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetRetailPrice" style="document"/>
+// <input name="GetRetailPrice">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetRetailPrice_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetSalesAndDiscountedPrices">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetSalesAndDiscountedPrices" style="document"/>
+// <input name="GetSalesAndDiscountedPrices">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetSalesAndDiscountedPrices_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetSalesHeaders">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetSalesHeaders" style="document"/>
+// <input name="GetSalesHeaders">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetSalesHeaders_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetSalesHeaders_239473069">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetSalesHeaders_239473069" style="document"/>
+// <input name="GetSalesHeaders_239473069">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetSalesHeaders_239473069_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetSalesPrice">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetSalesPrice" style="document"/>
+// <input name="GetSalesPrice">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetSalesPrice_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetTransferHeaders">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetTransferHeaders" style="document"/>
+// <input name="GetTransferHeaders">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetTransferHeaders_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetUsers">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetUsers" style="document"/>
+// <input name="GetUsers">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetUsers_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetVendors">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetVendors" style="document"/>
+// <input name="GetVendors">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetVendors_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetWarehouseActivityHeaders">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetWarehouseActivityHeaders" style="document"/>
+// <input name="GetWarehouseActivityHeaders">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetWarehouseActivityHeaders_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetWarehouseActivityLines">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetWarehouseActivityLines" style="document"/>
+// <input name="GetWarehouseActivityLines">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetWarehouseActivityLines_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetWarehouseJournalBatches">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetWarehouseJournalBatches" style="document"/>
+// <input name="GetWarehouseJournalBatches">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetWarehouseJournalBatches_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetWarehouseReceiptHeaders">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetWarehouseReceiptHeaders" style="document"/>
+// <input name="GetWarehouseReceiptHeaders">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetWarehouseReceiptHeaders_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetWarehouseReceiptLines">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetWarehouseReceiptLines" style="document"/>
+// <input name="GetWarehouseReceiptLines">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetWarehouseReceiptLines_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetWarehouseShipmentHeaders">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetWarehouseShipmentHeaders" style="document"/>
+// <input name="GetWarehouseShipmentHeaders">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetWarehouseShipmentHeaders_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="GetWarehouseShipmentLines">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:GetWarehouseShipmentLines" style="document"/>
+// <input name="GetWarehouseShipmentLines">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="GetWarehouseShipmentLines_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="HandheldScanSearch">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:HandheldScanSearch" style="document"/>
+// <input name="HandheldScanSearch">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="HandheldScanSearch_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="IsDirectTOPOUpdatedAndPosted">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:IsDirectTOPOUpdatedAndPosted" style="document"/>
+// <input name="IsDirectTOPOUpdatedAndPosted">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="IsDirectTOPOUpdatedAndPosted_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="LocationBinMandatory">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:LocationBinMandatory" style="document"/>
+// <input name="LocationBinMandatory">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="LocationBinMandatory_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="Login">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:Login" style="document"/>
+// <input name="Login">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="Login_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="MaxHandheldScan">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:MaxHandheldScan" style="document"/>
+// <input name="MaxHandheldScan">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="MaxHandheldScan_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PickTransferHeaderPostReceipt">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PickTransferHeaderPostReceipt" style="document"/>
+// <input name="PickTransferHeaderPostReceipt">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PickTransferHeaderPostReceipt_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PickTransferLineCreateUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PickTransferLineCreateUpdate" style="document"/>
+// <input name="PickTransferLineCreateUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PickTransferLineCreateUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PickTransferLineReceive">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PickTransferLineReceive" style="document"/>
+// <input name="PickTransferLineReceive">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PickTransferLineReceive_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="Ping">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:Ping" style="document"/>
+// <input name="Ping">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="Ping_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PostHandheldScanBinToBin">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PostHandheldScanBinToBin" style="document"/>
+// <input name="PostHandheldScanBinToBin">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PostHandheldScanBinToBin_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PostHandheldScanPhysInv">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PostHandheldScanPhysInv" style="document"/>
+// <input name="PostHandheldScanPhysInv">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PostHandheldScanPhysInv_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PostHandheldScan">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PostHandheldScan" style="document"/>
+// <input name="PostHandheldScan">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PostHandheldScan_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PurchaseHeaderCreate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PurchaseHeaderCreate" style="document"/>
+// <input name="PurchaseHeaderCreate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PurchaseHeaderCreate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PurchaseHeaderPost">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PurchaseHeaderPost" style="document"/>
+// <input name="PurchaseHeaderPost">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PurchaseHeaderPost_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PurchaseHeaderRelease">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PurchaseHeaderRelease" style="document"/>
+// <input name="PurchaseHeaderRelease">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PurchaseHeaderRelease_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PurchaseLineCreateUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PurchaseLineCreateUpdate" style="document"/>
+// <input name="PurchaseLineCreateUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PurchaseLineCreateUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PurchaseLineReceive">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PurchaseLineReceive" style="document"/>
+// <input name="PurchaseLineReceive">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PurchaseLineReceive_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PurchaseZeroQtyToReceiveShip">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PurchaseZeroQtyToReceiveShip" style="document"/>
+// <input name="PurchaseZeroQtyToReceiveShip">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PurchaseZeroQtyToReceiveShip_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PutAwayTransferHeaderPostReceipt">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PutAwayTransferHeaderPostReceipt" style="document"/>
+// <input name="PutAwayTransferHeaderPostReceipt">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PutAwayTransferHeaderPostReceipt_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PutAwayTransferLineCreateUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PutAwayTransferLineCreateUpdate" style="document"/>
+// <input name="PutAwayTransferLineCreateUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PutAwayTransferLineCreateUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="PutAwayTransferLineReceive">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:PutAwayTransferLineReceive" style="document"/>
+// <input name="PutAwayTransferLineReceive">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="PutAwayTransferLineReceive_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="ReopenTransferOrder">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:ReopenTransferOrder" style="document"/>
+// <input name="ReopenTransferOrder">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="ReopenTransferOrder_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="ResetPorcessingDirectTOField">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:ResetPorcessingDirectTOField" style="document"/>
+// <input name="ResetPorcessingDirectTOField">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="ResetPorcessingDirectTOField_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="SalesHeaderCreate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:SalesHeaderCreate" style="document"/>
+// <input name="SalesHeaderCreate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="SalesHeaderCreate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="SalesHeaderPost">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:SalesHeaderPost" style="document"/>
+// <input name="SalesHeaderPost">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="SalesHeaderPost_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="SalesHeaderRelease">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:SalesHeaderRelease" style="document"/>
+// <input name="SalesHeaderRelease">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="SalesHeaderRelease_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="SalesLineCreateUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:SalesLineCreateUpdate" style="document"/>
+// <input name="SalesLineCreateUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="SalesLineCreateUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="SalesLineShip">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:SalesLineShip" style="document"/>
+// <input name="SalesLineShip">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="SalesLineShip_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="SalesZeroQtyToShipReceive">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:SalesZeroQtyToShipReceive" style="document"/>
+// <input name="SalesZeroQtyToShipReceive">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="SalesZeroQtyToShipReceive_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="SelectPOForDirectTO">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:SelectPOForDirectTO" style="document"/>
+// <input name="SelectPOForDirectTO">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="SelectPOForDirectTO_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="ToJsonString">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:ToJsonString" style="document"/>
+// <input name="ToJsonString">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="ToJsonString_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="TransferHeaderCreate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:TransferHeaderCreate" style="document"/>
+// <input name="TransferHeaderCreate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="TransferHeaderCreate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="TransferHeaderPostReceipt">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:TransferHeaderPostReceipt" style="document"/>
+// <input name="TransferHeaderPostReceipt">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="TransferHeaderPostReceipt_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="TransferHeaderPostShipment">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:TransferHeaderPostShipment" style="document"/>
+// <input name="TransferHeaderPostShipment">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="TransferHeaderPostShipment_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="TransferHeaderRelease">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:TransferHeaderRelease" style="document"/>
+// <input name="TransferHeaderRelease">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="TransferHeaderRelease_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="TransferLineCreateUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:TransferLineCreateUpdate" style="document"/>
+// <input name="TransferLineCreateUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="TransferLineCreateUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="TransferLineReceive">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:TransferLineReceive" style="document"/>
+// <input name="TransferLineReceive">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="TransferLineReceive_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="TransferLineShip">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:TransferLineShip" style="document"/>
+// <input name="TransferLineShip">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="TransferLineShip_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="TransferZeroQtyToReceive">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:TransferZeroQtyToReceive" style="document"/>
+// <input name="TransferZeroQtyToReceive">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="TransferZeroQtyToReceive_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="TransferZeroQtyToShip">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:TransferZeroQtyToShip" style="document"/>
+// <input name="TransferZeroQtyToShip">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="TransferZeroQtyToShip_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="ValidateBinOptimized">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:ValidateBinOptimized" style="document"/>
+// <input name="ValidateBinOptimized">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="ValidateBinOptimized_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="ValidateBin">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:ValidateBin" style="document"/>
+// <input name="ValidateBin">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="ValidateBin_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="ValidateLotNoOptimized">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:ValidateLotNoOptimized" style="document"/>
+// <input name="ValidateLotNoOptimized">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="ValidateLotNoOptimized_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="ValidateLot">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:ValidateLot" style="document"/>
+// <input name="ValidateLot">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="ValidateLot_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="ValidateMoveByItem">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:ValidateMoveByItem" style="document"/>
+// <input name="ValidateMoveByItem">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="ValidateMoveByItem_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="ValidateUniqueSerialRequest">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:ValidateUniqueSerialRequest" style="document"/>
+// <input name="ValidateUniqueSerialRequest">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="ValidateUniqueSerialRequest_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="WarehouseReceiptPost">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:WarehouseReceiptPost" style="document"/>
+// <input name="WarehouseReceiptPost">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="WarehouseReceiptPost_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="WarehouseReceiptUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:WarehouseReceiptUpdate" style="document"/>
+// <input name="WarehouseReceiptUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="WarehouseReceiptUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="WarehouseShipmentPost">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:WarehouseShipmentPost" style="document"/>
+// <input name="WarehouseShipmentPost">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="WarehouseShipmentPost_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="WarehouseShipmentUpdate">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:WarehouseShipmentUpdate" style="document"/>
+// <input name="WarehouseShipmentUpdate">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="WarehouseShipmentUpdate_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// <operation name="test1">
+// <operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="urn:microsoft-dynamics-schemas/codeunit/WMSOnlineFunctions:test1" style="document"/>
+// <input name="test1">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </input>
+// <output name="test1_Result">
+// <body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="literal"/>
+// </output>
+// </operation>
+// </binding>
+// <service name="WMSOnlineFunctions">
+// <port name="WMSOnlineFunctions_Port" binding="tns:WMSOnlineFunctions_Binding">
+// <address xmlns="http://schemas.xmlsoap.org/wsdl/soap/" location="http://172.16.17.25:7047/BC200/WS/SKECHERS/Codeunit/WMSOnlineFunctions"/>
+// </port>
+// </service>
+// </definitions>

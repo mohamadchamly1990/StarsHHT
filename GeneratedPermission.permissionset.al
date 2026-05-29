@@ -1,0 +1,31 @@
+permissionset 51000 StarsPermission
+{
+    Assignable = true;
+    Permissions = tabledata "Stars Handheld Journl Security" = RIMD,
+        tabledata "Stars Handheld Loc Security" = RIMD,
+        tabledata "Stars Handheld Scan" = RIMD,
+        tabledata "Stars HandHeld Sessions" = RIMD,
+        tabledata "Stars Handheld Temp Table" = RIMD,
+        tabledata "Stars Handheld Users" = RIMD,
+        tabledata "Stars HHT User Batch" = RIMD,
+        table "Stars Handheld Journl Security" = X,
+        table "Stars Handheld Loc Security" = X,
+        table "Stars Handheld Scan" = X,
+        table "Stars HandHeld Sessions" = X,
+        table "Stars Handheld Temp Table" = X,
+        table "Stars Handheld Users" = X,
+        table "Stars HHT User Batch" = X,
+        codeunit "Stars Handheld Utilities" = X,
+        codeunit "Stars WMS Online Functions" = X,
+        codeunit "Stars WMS Utils" = X,
+        xmlport "Stars Import Scanned Items" = X,
+        page "Stars Handheld Journl Security" = X,
+        page "Stars Handheld Scans" = X,
+        page "Stars Handheld Sessions" = X,
+        page "Stars Handheld User Sec Card" = X,
+        page "Stars Handheld User Security" = X,
+        page "Stars Handheld Users" = X,
+        page "Stars User Batch List" = X,
+        query "Item Qty. By Location Query" = X,
+        query "Stars Handheld Distinct" = X;
+}
