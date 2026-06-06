@@ -5641,4 +5641,125 @@ codeunit 51001 "Stars WMS Online Functions"
         If HandheldScan.Findlast() then
             exit(HandheldScan."Entry No.");
     End;
+
+    internal procedure InternalMovementHeaderCreate(LocationCodeP: Code[10]; UserIdP: Code[50]): Code[20]
+    var
+        IntMovHeaderL: Record "Internal Movement Header";
+    begin
+        IntMovHeaderL.INIT();
+        IntMovHeaderL.VALIDATE("No.", '');
+        IntMovHeaderL.INSERT(TRUE);
+        IntMovHeaderL.VALIDATE("Location Code", LocationCodeP);
+        IntMovHeaderL.MODIFY(TRUE);
+
+        CreateInfoHandheldScan(HandheldScanG."Action Type"::Create, HandheldScanG."Document Type"::"Movement by Item",
+            IntMovHeaderL."No.", LocationCodeP, 'Internal Movement Create', UserIdP);
+
+        EXIT(ToJsonString(IntMovHeaderL."No."));
+    end;
+
+
+    internal procedure InternalMovementLineCreate(DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; FromBinCodeP: Code[20]; ToBinCodeP: Code[20]; UserIdP: Code[50]): Boolean
+    var
+        IntMovHeaderL: Record "Internal Movement Header";
+        IntMovLineL: Record "Internal Movement Line";
+        HandheldScanL: Record "Stars HandHeld Scan";
+        LineNoL: Integer;
+    begin
+        if not IntMovHeaderL.GET(DocumentNoP) then
+            EXIT(FALSE);
+
+        IntMovLineL.SETRANGE("No.", DocumentNoP);
+        IntMovLineL.SETRANGE("Item No.", ItemNoP);
+        IntMovLineL.SETRANGE("Variant Code", VariantCodeP);
+        IntMovLineL.SETRANGE("Unit of Measure Code", UnitOfMeasureCodeP);
+        IntMovLineL.SETRANGE("From Bin Code", FromBinCodeP);
+        IntMovLineL.SETRANGE("To Bin Code", ToBinCodeP);
+        IF IntMovLineL.FINDFIRST() THEN BEGIN
+            IntMovLineL.VALIDATE(Quantity, IntMovLineL.Quantity + QuantityP);
+            IntMovLineL.MODIFY(TRUE);
+        END ELSE BEGIN
+            CLEAR(IntMovLineL);
+            IntMovLineL.SETRANGE("No.", DocumentNoP);
+            IF IntMovLineL.FINDLAST() THEN
+                LineNoL := IntMovLineL."Line No.";
+            CLEAR(IntMovLineL);
+            IntMovLineL.INIT();
+            IntMovLineL.VALIDATE("No.", DocumentNoP);
+            IntMovLineL.VALIDATE("Line No.", LineNoL + 10000);
+            IntMovLineL.VALIDATE("Item No.", ItemNoP);
+            IntMovLineL.VALIDATE("Variant Code", VariantCodeP);
+            IntMovLineL.VALIDATE("Unit of Measure Code", UnitOfMeasureCodeP);
+            IntMovLineL.VALIDATE("From Bin Code", FromBinCodeP);
+            IntMovLineL.VALIDATE("To Bin Code", ToBinCodeP);
+            IntMovLineL.VALIDATE(Quantity, QuantityP);
+            IntMovLineL.INSERT(TRUE);
+        END;
+
+        HandheldScanL.INIT();
+        HandheldScanL.VALIDATE("Action Type", HandheldScanL."Action Type"::Create);
+        HandheldScanL.VALIDATE("Document Type", HandheldScanL."Document Type"::"Movement by Item");
+        HandheldScanL.VALIDATE("Document No.", DocumentNoP);
+        HandheldScanL.VALIDATE("Location Code", IntMovHeaderL."Location Code");
+        HandheldScanL.VALIDATE("Barcode No.", BarcodeNoP);
+        HandheldScanL.VALIDATE("Item No.", IntMovLineL."Item No.");
+        HandheldScanL.VALIDATE("Variant Code", IntMovLineL."Variant Code");
+        HandheldScanL.VALIDATE("Unit of Measure Code", IntMovLineL."Unit of Measure Code");
+        HandheldScanL.VALIDATE(Quantity, QuantityP);
+        HandheldScanL.VALIDATE("Quantity (Base)", QuantityP * IntMovLineL."Qty. per Unit of Measure");
+        HandheldScanL.VALIDATE("Qty. per Unit of Measure", IntMovLineL."Qty. per Unit of Measure");
+        HandheldScanL.VALIDATE("Bin Code", FromBinCodeP);
+        HandheldScanL.VALIDATE("Bin Code To", ToBinCodeP);
+        HandheldScanL.VALIDATE("User ID", UserIdP);
+        HandheldScanL.INSERT(TRUE);
+
+        EXIT(TRUE);
+    end;
+
+
+    internal procedure InternalMovementCreateInventoryMovement(DocumentNoP: Code[20]; UserIdP: Code[50]): Boolean
+    var
+        IntMovHeaderL: Record "Internal Movement Header";
+        CreateInvtPickMovementL: Codeunit "Create Inventory Pick/Movement";
+        WhseActivityLineL: Record "Warehouse Activity Line";
+        InvtMovNoL: Code[20];
+        WhseRequest: Record "Warehouse Request";
+        WhseActivityRegister: Codeunit "Whse.-Activity-Register";
+    begin
+        if not IntMovHeaderL.GET(DocumentNoP) then
+            EXIT(FALSE);
+
+        CreateInvtPickMovementL.SetWhseRequest(WhseRequest, True);
+        CreateInvtPickMovementL.CreateInvtMvntWithoutSource(IntMovHeaderL);
+
+        // Find the Inventory Movement created from this Internal Movement
+        WhseActivityLineL.SETRANGE("Activity Type", WhseActivityLineL."Activity Type"::"Invt. Movement");
+        //WhseActivityLineL.SETRANGE("Whse. Document No.", DocumentNoP);
+        if WhseActivityLineL.FindSet() then begin
+            repeat
+                InvtMovNoL := WhseActivityLineL."No.";
+
+                // Autofill Qty. to Handle
+                WhseActivityLineL.RESET();
+                WhseActivityLineL.SETRANGE("Activity Type", WhseActivityLineL."Activity Type"::"Invt. Movement");
+                WhseActivityLineL.SETRANGE("No.", InvtMovNoL);
+                WhseActivityLineL.AutofillQtyToHandle(WhseActivityLineL);
+
+                // Register the Inventory Movement
+                WhseActivityLineL.RESET();
+                WhseActivityLineL.SETRANGE("Activity Type", WhseActivityLineL."Activity Type"::"Invt. Movement");
+                WhseActivityLineL.SETRANGE("No.", InvtMovNoL);
+                WhseActivityLineL.FilterGroup(3);
+                WhseActivityLineL.SETRANGE(Breakbulk);
+                WhseActivityLineL.FilterGroup(0);
+                WhseActivityRegister.Run(WhseActivityLineL)
+            // CODEUNIT.RUN(CODEUNIT::"Whse.-Act.-Register (Yes/No)", WhseActivityLineL);
+            until WhseActivityLineL.Next() = 0;
+        end;
+
+        CreateInfoHandheldScan(HandheldScanG."Action Type"::Post, HandheldScanG."Document Type"::"Movement by Item",
+            DocumentNoP, IntMovHeaderL."Location Code", 'Internal Movement Create Inventory Movement', UserIdP);
+
+        EXIT(TRUE);
+    end;
 }
