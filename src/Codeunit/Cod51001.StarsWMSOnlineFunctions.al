@@ -1914,9 +1914,9 @@ codeunit 51001 "Stars WMS Online Functions"
     end;
 
 
-    internal procedure PurchaseLineCreateUpdate(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50])
+    internal procedure PurchaseLineCreateUpdate(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50]; BinCodeP: Code[20])
     begin
-        PurchaseLineCreateUpdateWithBin(DocumentTypeP, DocumentNoP, BarcodeNoP, ItemNoP, VariantCodeP, UnitOfMeasureCodeP, QuantityP, LotNoP, SerialNoP, ExpiryDateP, UserIdP, '');
+        PurchaseLineCreateUpdateWithBin(DocumentTypeP, DocumentNoP, BarcodeNoP, ItemNoP, VariantCodeP, UnitOfMeasureCodeP, QuantityP, LotNoP, SerialNoP, ExpiryDateP, UserIdP, BinCodeP);
     end;
 
     internal procedure PurchaseLineCreateUpdateWithBin(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50]; BinCodeP: Code[20])
