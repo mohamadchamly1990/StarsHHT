@@ -3209,6 +3209,11 @@ codeunit 51001 "Stars WMS Online Functions"
 
 
     internal procedure SalesLineCreateUpdate(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50])
+    begin
+        SalesLineCreateUpdateWithBin(DocumentTypeP, DocumentNoP, BarcodeNoP, ItemNoP, VariantCodeP, UnitOfMeasureCodeP, QuantityP, LotNoP, SerialNoP, ExpiryDateP, UserIdP, '');
+    end;
+
+    internal procedure SalesLineCreateUpdateWithBin(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50]; BinCodeP: Code[20])
     var
         SalesLineL: Record "Sales Line";
         LineNoL: Integer;
@@ -3224,6 +3229,7 @@ codeunit 51001 "Stars WMS Online Functions"
         SalesLineL.SETRANGE("No.", ItemNoP);
         SalesLineL.SETRANGE("Variant Code", VariantCodeP);
         SalesLineL.SETRANGE("Unit of Measure Code", UnitOfMeasureCodeP);
+        SalesLineL.SETRANGE("Bin Code", BinCodeP);
         IF SalesLineL.FINDFIRST() THEN BEGIN
             SalesLineL.VALIDATE(Quantity, SalesLineL.Quantity + QuantityP);
             SalesLineL.MODIFY(TRUE);
@@ -3244,6 +3250,7 @@ codeunit 51001 "Stars WMS Online Functions"
             SalesLineL.VALIDATE("No.", ItemNoP);
             SalesLineL.VALIDATE("Variant Code", VariantCodeP);
             SalesLineL.VALIDATE("Unit of Measure Code", UnitOfMeasureCodeP);
+            SalesLineL.VALIDATE("Bin Code", BinCodeP);
             SalesLineL.VALIDATE(Quantity, QuantityP);
             SalesLineL.MODIFY(TRUE);
         END;
@@ -3259,6 +3266,7 @@ codeunit 51001 "Stars WMS Online Functions"
                 HandheldScanL.VALIDATE("Document Type", HandheldScanL."Document Type"::"Sales Return Order");
         HandheldScanL.VALIDATE("Document No.", SalesLineL."Document No.");
         HandheldScanL.VALIDATE("Location Code", SalesLineL."Location Code");
+        HandheldScanL.VALIDATE("Bin Code", SalesLineL."Bin Code");
         HandheldScanL.VALIDATE("Barcode No.", BarcodeNoP);
         HandheldScanL.VALIDATE("Item No.", ItemNoP);
         HandheldScanL.VALIDATE("Variant Code", SalesLineL."Variant Code");
