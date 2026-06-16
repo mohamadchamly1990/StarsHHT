@@ -1915,6 +1915,11 @@ codeunit 51001 "Stars WMS Online Functions"
 
 
     internal procedure PurchaseLineCreateUpdate(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50])
+    begin
+        PurchaseLineCreateUpdateWithBin(DocumentTypeP, DocumentNoP, BarcodeNoP, ItemNoP, VariantCodeP, UnitOfMeasureCodeP, QuantityP, LotNoP, SerialNoP, ExpiryDateP, UserIdP, '');
+    end;
+
+    internal procedure PurchaseLineCreateUpdateWithBin(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50]; BinCodeP: Code[20])
     var
         PurchaseLineL: Record "Purchase Line";
         LineNoL: Integer;
@@ -1932,6 +1937,7 @@ codeunit 51001 "Stars WMS Online Functions"
         PurchaseLineL.SETRANGE("No.", ItemNoP);
         PurchaseLineL.SETRANGE("Variant Code", VariantCodeP);
         PurchaseLineL.SETRANGE("Unit of Measure Code", UnitOfMeasureCodeP);
+        PurchaseLineL.SETRANGE("Bin Code", BinCodeP);
         IF PurchaseLineL.FINDFIRST() THEN BEGIN
             PurchaseLineL.VALIDATE(Quantity, PurchaseLineL.Quantity + QuantityP);
             PurchaseLineL.MODIFY(TRUE);
@@ -1952,6 +1958,7 @@ codeunit 51001 "Stars WMS Online Functions"
             PurchaseLineL.VALIDATE("No.", ItemNoP);
             PurchaseLineL.VALIDATE("Variant Code", VariantCodeP);
             PurchaseLineL.VALIDATE("Unit of Measure Code", UnitOfMeasureCodeP);
+            PurchaseLineL.VALIDATE("Bin Code", BinCodeP);
             PurchaseLineL.VALIDATE(Quantity, QuantityP);
             PurchaseLineL.MODIFY(TRUE);
         END;
@@ -1968,6 +1975,7 @@ codeunit 51001 "Stars WMS Online Functions"
                 HandheldScanL.VALIDATE("Document Type", HandheldScanL."Document Type"::"Purchase Return Order");
         HandheldScanL.VALIDATE("Document No.", PurchaseLineL."Document No.");
         HandheldScanL.VALIDATE("Location Code", PurchaseLineL."Location Code");
+        HandheldScanL.VALIDATE("Bin Code", PurchaseLineL."Bin Code");
         HandheldScanL.VALIDATE("Barcode No.", BarcodeNoP);
         HandheldScanL.VALIDATE("Item No.", ItemNoP);
         HandheldScanL.VALIDATE("Variant Code", PurchaseLineL."Variant Code");
@@ -3208,9 +3216,9 @@ codeunit 51001 "Stars WMS Online Functions"
     end;
 
 
-    internal procedure SalesLineCreateUpdate(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50])
+    internal procedure SalesLineCreateUpdate(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50]; BinCodeP: Code[20])
     begin
-        SalesLineCreateUpdateWithBin(DocumentTypeP, DocumentNoP, BarcodeNoP, ItemNoP, VariantCodeP, UnitOfMeasureCodeP, QuantityP, LotNoP, SerialNoP, ExpiryDateP, UserIdP, '');
+        SalesLineCreateUpdateWithBin(DocumentTypeP, DocumentNoP, BarcodeNoP, ItemNoP, VariantCodeP, UnitOfMeasureCodeP, QuantityP, LotNoP, SerialNoP, ExpiryDateP, UserIdP, BinCodeP);
     end;
 
     internal procedure SalesLineCreateUpdateWithBin(DocumentTypeP: Option; DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50]; BinCodeP: Code[20])
