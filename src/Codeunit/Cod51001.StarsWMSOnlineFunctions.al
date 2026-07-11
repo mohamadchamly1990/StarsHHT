@@ -5778,4 +5778,37 @@ codeunit 51001 "Stars WMS Online Functions"
 
         EXIT(TRUE);
     end;
+
+
+    internal procedure InternalMovementDelete(DocumentNoP: Code[20]; UserIdP: Code[50]): Boolean
+    var
+        IntMovHeaderL: Record "Internal Movement Header";
+        IntMovLineL: Record "Internal Movement Line";
+        WhseActivityLineL: Record "Warehouse Activity Line";
+        LocationCodeL: Code[10];
+    begin
+        if not IntMovHeaderL.GET(DocumentNoP) then
+            EXIT(FALSE);
+
+        // Block deletion if an Inventory Movement was already created from this document
+        WhseActivityLineL.SETRANGE("Activity Type", WhseActivityLineL."Activity Type"::"Invt. Movement");
+        WhseActivityLineL.SETRANGE("Whse. Document No.", DocumentNoP);
+        if not WhseActivityLineL.ISEMPTY() then
+            Error('Internal Movement %1 cannot be deleted because an Inventory Movement has already been created for it.', DocumentNoP);
+
+        LocationCodeL := IntMovHeaderL."Location Code";
+
+        // Delete lines first
+        IntMovLineL.SETRANGE("No.", DocumentNoP);
+        if not IntMovLineL.ISEMPTY() then
+            IntMovLineL.DELETEALL(TRUE);
+
+        // Delete header
+        IntMovHeaderL.DELETE(TRUE);
+
+        CreateInfoHandheldScan(HandheldScanG."Action Type"::Delete, HandheldScanG."Document Type"::"Movement by Item",
+            DocumentNoP, LocationCodeL, 'Internal Movement Delete', UserIdP);
+
+        EXIT(TRUE);
+    end;
 }

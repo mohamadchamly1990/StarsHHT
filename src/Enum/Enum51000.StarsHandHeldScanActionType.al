@@ -14,5 +14,6 @@ enum 51000 "Stars HandHeld Scan Action Type"
     value(3; "Receive") { Caption = 'Receive'; }
     value(4; "Release") { Caption = 'Release'; }
     value(5; "Post") { Caption = 'Post'; }
+    value(6; "Delete") { Caption = 'Delete'; }
 
 }
