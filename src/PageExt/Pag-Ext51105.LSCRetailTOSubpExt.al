@@ -2,7 +2,7 @@
 /// Stars01.00 MN (11-03-24)
 ///</summary>
 
-pageextension 51005 "LSC Retail TO. Subp. Ext" extends "LSC Retail TO. Subp."
+pageextension 51105 "LSC Retail TO. Subp. Ext" extends "LSC Retail TO. Subp."
 {
     layout
     {

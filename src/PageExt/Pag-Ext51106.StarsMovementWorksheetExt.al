@@ -1,4 +1,4 @@
-pageextension 51006 "Stars Movement Worksheet Ext" extends "Movement Worksheet"
+pageextension 51106 "Stars Movement Worksheet Ext" extends "Movement Worksheet"
 {
     actions
     {

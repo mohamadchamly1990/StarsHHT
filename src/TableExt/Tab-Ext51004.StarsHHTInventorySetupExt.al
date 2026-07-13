@@ -21,6 +21,28 @@ tableextension 51004 "Stars HHT Inventory Setup Ext" extends "Inventory Setup"
         {
             Caption = 'Reset Qty After Tran Rec Post';
         }
+        field(51003; "Stars Bin Receiving"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "Bin Content"."Bin Code";
+        }
+        field(51004; "Stars Bin Shipping"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "Bin Content"."Bin Code";
+        }
+        field(51005; "Stars RP Transfer No. Series"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Stars Replenishment TO No. series';
+            TableRelation = "No. Series".Code;
+        }
+        field(51006; "stars RP IM No Series"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Stars Replenishment IM No. series';
+            TableRelation = "No. Series".Code;
+        }
 
     }
 }

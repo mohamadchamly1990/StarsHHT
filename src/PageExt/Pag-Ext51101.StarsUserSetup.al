@@ -1,4 +1,4 @@
-pageextension 51001 "Stars User Setup" extends "User Setup"
+pageextension 51101 "Stars User Setup" extends "User Setup"
 {
     layout
     {

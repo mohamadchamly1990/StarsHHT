@@ -1,4 +1,4 @@
-pageextension 51002 "Stars Item Journal Batches Ext" extends "Item Journal Batches"
+pageextension 51102 "Stars Item Journal Batches Ext" extends "Item Journal Batches"
 {
     layout
     {

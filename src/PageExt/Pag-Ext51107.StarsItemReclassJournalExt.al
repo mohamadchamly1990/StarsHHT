@@ -1,4 +1,4 @@
-pageextension 51007 "Stars Item Reclass Journal Ext" extends "Item Reclass. Journal"
+pageextension 51107 "Stars Item Reclass Journal Ext" extends "Item Reclass. Journal"
 {
     layout
     {

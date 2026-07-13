@@ -4579,7 +4579,7 @@ codeunit 51001 "Stars WMS Online Functions"
         TransferLineL.SETRANGE("Variant Code", VariantCodeP);
         TransferLineL.SETRANGE("Unit of Measure Code", UnitOfMeasureCodeP);
         TransferLineL.SETFILTER(Quantity, '>%1', TransferLineL."Qty. to Ship");
-        TransferLineL.SetRange("Transfer-To Bin Code", BinCodeP);
+        TransferLineL.SETRANGE("Transfer-from Bin Code", BinCodeP);
         IF TransferLineL.FINDFIRST THEN BEGIN
             CLEAR(SumOfQty);
             CLEAR(SumOfQtyToShip);
@@ -4597,7 +4597,7 @@ codeunit 51001 "Stars WMS Online Functions"
                 TransferLineL.SETRANGE("Variant Code", VariantCodeP);
                 TransferLineL.SETRANGE("Unit of Measure Code", UnitOfMeasureCodeP);
                 TransferLineL.SETFILTER(Quantity, '>%1', TransferLineL."Qty. to Ship");
-                TransferLineL.SetRange("Transfer-To Bin Code", BinCodeP);
+                TransferLineL.SETRANGE("Transfer-from Bin Code", BinCodeP);
                 IF TransferLineL.FINDFIRST THEN BEGIN
                     //Stars04.00+
                     REPEAT
@@ -4627,7 +4627,7 @@ codeunit 51001 "Stars WMS Online Functions"
                             HandheldScanL.VALIDATE("Lot No.", LotNoP);
                             HandheldScanL.VALIDATE(Expiry, ExpiryDateP);
                             HandheldScanL.VALIDATE("User ID", UserIdP);
-                            HandheldScanL.Validate("Bin Code To", BinCodeP);
+                            HandheldScanL.Validate("Bin Code", BinCodeP);
                             HandheldScanL.INSERT(TRUE);
                             //Stars04.00+
                         END ELSE BEGIN
@@ -4653,7 +4653,7 @@ codeunit 51001 "Stars WMS Online Functions"
                             HandheldScanL.VALIDATE("Lot No.", LotNoP);
                             HandheldScanL.VALIDATE(Expiry, ExpiryDateP);
                             HandheldScanL.VALIDATE("User ID", UserIdP);
-                            HandheldScanL.Validate("Bin Code To", BinCodeP);
+                            HandheldScanL.Validate("Bin Code", BinCodeP);
                             HandheldScanL.INSERT(TRUE);
 
                             QuantityP := QuantityP - ValidQtyToShip;
@@ -4906,6 +4906,42 @@ codeunit 51001 "Stars WMS Online Functions"
         end;
         Exit(false);
     end;
+
+
+    internal procedure DeleteTransferOrderLine(documentNoP: Code[20]; LineNo: Integer): Boolean
+    var
+        TransferLine: Record "Transfer Line";
+        TransferHeader: Record "Transfer Header";
+    begin
+        If TransferHeader.Get(documentNoP) then begin
+            // Check header status
+            if TransferHeader.Status <> TransferHeader.Status::Open then
+                Error('Transfer Order must be Open to delete.');
+
+            // Check lines
+            TransferLine.Reset();
+            TransferLine.SetRange("Document No.", TransferHeader."No.");
+            TransferLine.SetRange("Line No.", LineNo);
+            if TransferLine.FindSet() then
+                repeat
+                    if (TransferLine."Quantity Shipped" <> 0) or
+                       (TransferLine."Quantity Received" <> 0) then
+                        Error(
+                          'Transfer Order %1 cannot be deleted because one or more lines are already shipped or received.',
+                          TransferHeader."No.");
+                until TransferLine.Next() = 0;
+
+            // Delete lines first
+            TransferLine.Reset();
+            TransferLine.SetRange("Document No.", TransferHeader."No.");
+            TransferLine.SetRange("Line No.", LineNo);
+            if not TransferLine.IsEmpty() then
+                TransferLine.DeleteAll(true);
+            Exit(true);
+        end;
+        Exit(false);
+    end;
+
 
 
     internal procedure PickTransferLineCreateUpdate(DocumentNoP: Code[20]; BarcodeNoP: Code[20]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; LotNoP: Code[20]; SerialNoP: Code[20]; ExpiryDateP: Date; UserIdP: Code[50]; BinCodeP: Code[20])
@@ -5810,5 +5846,105 @@ codeunit 51001 "Stars WMS Online Functions"
             DocumentNoP, LocationCodeL, 'Internal Movement Delete', UserIdP);
 
         EXIT(TRUE);
+    end;
+
+
+    internal procedure InternalMovementFillQtyInventoryMovement(DocumentNoP: Code[20]; UserIdP: Code[50]; ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; QuantityP: Decimal; BinCodeP: Code[20]): Boolean
+    var
+        IntMovHeaderL: Record "Warehouse Activity Header";
+        CreateInvtPickMovementL: Codeunit "Create Inventory Pick/Movement";
+        WhseActivityLineL, WhseActivityLineL2 : Record "Warehouse Activity Line";
+        InvtMovNoL: Code[20];
+        WhseRequest: Record "Warehouse Request";
+        InventorySetup: Record "Inventory Setup";
+    begin
+        if not IntMovHeaderL.GET(WhseActivityLineL."Activity Type"::"Invt. Movement", DocumentNoP) then
+            EXIT(FALSE);
+
+
+        // CreateInvtPickMovementL.SetWhseRequest(WhseRequest, True);
+        // CreateInvtPickMovementL.CreateInvtMvntWithoutSource(IntMovHeaderL);      
+
+        // Find the Inventory Movement created from this Internal Movement
+        WhseActivityLineL.Reset();
+        WhseActivityLineL.SETRANGE("Activity Type", WhseActivityLineL."Activity Type"::"Invt. Movement");
+        WhseActivityLineL.SETRANGE("Action Type", WhseActivityLineL."Action Type"::Take);
+        WhseActivityLineL.SETRANGE("No.", IntMovHeaderL."No.");
+        WhseActivityLineL.SetRange("Item No.", ItemNoP);
+        WhseActivityLineL.SetRange("Variant Code", VariantCodeP);
+        WhseActivityLineL.SetRange("Unit of Measure Code", UnitOfMeasureCodeP);
+        WhseActivityLineL.SetRange("Bin Code", BinCodeP);
+        if WhseActivityLineL.FindSet() then begin
+            repeat
+                WhseActivityLineL.Validate("Qty. to Handle", QuantityP);
+                if WhseActivityLineL."Qty. to Handle (Base)" <> WhseActivityLineL."Qty. Outstanding (Base)" then
+                    WhseActivityLineL.Validate("Qty. to Handle (Base)", QuantityP);
+
+                WhseActivityLineL.Modify();
+            until WhseActivityLineL.Next() = 0;
+        end;
+
+        WhseActivityLineL2.Reset();
+        WhseActivityLineL2.SETRANGE("Activity Type", WhseActivityLineL2."Activity Type"::"Invt. Movement");
+        WhseActivityLineL2.SETRANGE("Action Type", WhseActivityLineL2."Action Type"::Place);
+        WhseActivityLineL2.SETRANGE("No.", IntMovHeaderL."No.");
+        WhseActivityLineL2.SetRange("Item No.", ItemNoP);
+        WhseActivityLineL2.SetRange("Variant Code", VariantCodeP);
+        WhseActivityLineL2.SetRange("Unit of Measure Code", UnitOfMeasureCodeP);
+        WhseActivityLineL2.SetRange("Bin Code", InventorySetup."Stars Bin Shipping");
+        if WhseActivityLineL2.FindSet() then begin
+            repeat
+                WhseActivityLineL2.Validate("Qty. to Handle", QuantityP);
+                if WhseActivityLineL2."Qty. to Handle (Base)" <> WhseActivityLineL2."Qty. Outstanding (Base)" then
+                    WhseActivityLineL2.Validate("Qty. to Handle (Base)", QuantityP);
+
+                WhseActivityLineL2.Modify();
+            until WhseActivityLineL2.Next() = 0;
+        end;
+
+        CreateInfoHandheldScan(HandheldScanG."Action Type"::Receive, HandheldScanG."Document Type"::"Movement by Item",
+            DocumentNoP, IntMovHeaderL."Location Code", 'Internal Movement Create Inventory Movement', UserIdP);
+
+        EXIT(TRUE);
+    end;
+
+    internal procedure InternalMovementRegisterInventoryMovement(DocumentNoP: Code[20]; UserIdP: Code[50]): Boolean
+    var
+        WhseActivityLineL, WhseActivityLineL2 : Record "Warehouse Activity Line";
+        WhseActivityRegister: Codeunit "Whse.-Activity-Register";
+        IntMovHeaderL: Record "Warehouse Activity Header";
+    begin
+
+        if not IntMovHeaderL.GET(WhseActivityLineL."Activity Type"::"Invt. Movement", DocumentNoP) then
+            EXIT(FALSE);
+
+        // Register the Inventory Movement
+        WhseActivityLineL2.SETRANGE("Activity Type", WhseActivityLineL2."Activity Type"::"Invt. Movement");
+        WhseActivityLineL2.SETRANGE("No.", IntMovHeaderL."No.");
+        If WhseActivityLineL2.Findset() then
+            repeat
+                WhseActivityLineL2.RESET();
+                WhseActivityLineL2.SETRANGE("Activity Type", WhseActivityLineL2."Activity Type"::"Invt. Movement");
+                WhseActivityLineL2.SETRANGE("No.", IntMovHeaderL."No.");
+                WhseActivityLineL2.FilterGroup(3);
+                WhseActivityLineL2.SETRANGE(Breakbulk);
+                WhseActivityLineL2.FilterGroup(0);
+                WhseActivityRegister.Run(WhseActivityLineL2);
+            until WhseActivityLineL2.Next() = 0;
+
+
+        ResetHandheldQty(WhseActivityLineL2);
+
+
+        CreateInfoHandheldScan(HandheldScanG."Action Type"::Post, HandheldScanG."Document Type"::"Movement by Item",
+            DocumentNoP, IntMovHeaderL."Location Code", 'Internal Movement Create Inventory Movement', UserIdP);
+
+        exit(true);
+    end;
+
+    procedure ResetHandheldQty(Var WhseActivityLineL: Record "Warehouse Activity line")
+    var
+    begin
+        WhseActivityLineL.ModifyAll("Qty. to Handle", 0);
     end;
 }

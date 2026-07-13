@@ -1,5 +1,5 @@
 //Meg01.00 MC (14-01-25) New columns showing from/to inventory availability on transfer lines. (ALNAJMA-000030)
-pageextension 51000 "Stars HHT Transfer Order Sub" extends "Transfer Order Subform"
+pageextension 51100 "Stars HHT Transfer Order Sub" extends "Transfer Order Subform"
 {
     layout
     {

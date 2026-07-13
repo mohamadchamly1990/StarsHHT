@@ -1,5 +1,5 @@
 // Stars 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-pageextension 51003 "Stars Phys. Inv. Journal Ext." extends "Phys. Inventory Journal"
+pageextension 51103 "Stars Phys. Inv. Journal Ext." extends "Phys. Inventory Journal"
 {
     layout
     {
