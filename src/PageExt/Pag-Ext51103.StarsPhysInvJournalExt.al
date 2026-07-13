@@ -8,12 +8,13 @@ pageextension 51103 "Stars Phys. Inv. Journal Ext." extends "Phys. Inventory Jou
             field("Updated from Handheld"; Rec."Stars Updated from Handheld")
             {
                 ApplicationArea = All;
-                Caption = 'Updated from Handheld';
+                Caption = 'Stars Updated from Handheld';
             }
             field("Stars Updated without Calculated"; Rec."Stars Updated witht Calculated")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Updated without Calculated field.', Comment = '%';
+                Caption = 'Stars Updated without Calculated';
             }
         }
         modify(CurrentJnlBatchName)
@@ -30,7 +31,7 @@ pageextension 51103 "Stars Phys. Inv. Journal Ext." extends "Phys. Inventory Jou
         addlast("F&unctions")
         {
 
-            action("View Scans")
+            action("Stars View Scans")
             {
                 ApplicationArea = All;
                 Image = Import;
@@ -41,7 +42,7 @@ pageextension 51103 "Stars Phys. Inv. Journal Ext." extends "Phys. Inventory Jou
                     HandheldUtilities_l.ShowScansPhysInventory(Rec);
                 end;
             }
-            action("Handheld Journal Security")
+            action("Stars Handheld Journal Security")
             {
                 ApplicationArea = All;
                 Image = Import;
@@ -60,7 +61,7 @@ pageextension 51103 "Stars Phys. Inv. Journal Ext." extends "Phys. Inventory Jou
                     HandheldJournalSecurity.RUNMODAL;
                 end;
             }
-            action("Import From Scans")
+            action("Stars Import From Scans")
             {
                 ApplicationArea = All;
                 Image = Import;
@@ -71,7 +72,7 @@ pageextension 51103 "Stars Phys. Inv. Journal Ext." extends "Phys. Inventory Jou
                     HandheldUtilities_l.UpdateHandheldScanPhysInventory(Rec);
                 end;
             }
-            action("Import From Scans With Bin")
+            action("Stars Import From Scans With Bin")
             {
                 ApplicationArea = All;
                 Image = Import;
@@ -82,7 +83,7 @@ pageextension 51103 "Stars Phys. Inv. Journal Ext." extends "Phys. Inventory Jou
                     HandheldUtilities_l.UpdateHandheldScanPhysInventoryWithBin(Rec);
                 end;
             }
-            action("Delete Handheld Sessions")
+            action("Stars Delete Handheld Sessions")
             {
                 ApplicationArea = All;
                 Image = Import;
@@ -103,7 +104,7 @@ pageextension 51103 "Stars Phys. Inv. Journal Ext." extends "Phys. Inventory Jou
                     HandheldSessions_l.RUN;
                 end;
             }
-            action("Unprocess Handheld Sessions")
+            action("Stars Unprocess Handheld Sessions")
             {
                 ApplicationArea = All;
                 Image = Import;

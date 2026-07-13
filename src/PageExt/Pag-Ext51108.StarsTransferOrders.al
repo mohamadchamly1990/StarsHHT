@@ -538,7 +538,7 @@ pageextension 51108 "Stars Transfer Orders" extends "Transfer Orders"
         then
             if Location."Bin Mandatory" then begin
 
-                Location.TestField("Receipt Bin Code");
+                InventorySetup.TestField("Stars Bin Receiving");
 
                 TransferLine.Validate("Transfer-To Bin Code", InventorySetup."Stars Bin Receiving");
             end;
@@ -547,7 +547,7 @@ pageextension 51108 "Stars Transfer Orders" extends "Transfer Orders"
         then
             if Location."Bin Mandatory" then begin
 
-                Location.TestField("Shipment Bin Code");
+                InventorySetup.TestField("Stars Bin Shipping");
 
                 if IntMovHeader."No." = '' then
                     Error('Internal Movement Header was not created for Location %1.', TransferHeader."Transfer-from Code");
@@ -577,7 +577,9 @@ pageextension 51108 "Stars Transfer Orders" extends "Transfer Orders"
         Clear(BestBinCode);
         Clear(BestBinQty);
 
-
+        InventorySetup.Get();
+        InventorySetup.TestField("Stars Bin Receiving");
+        InventorySetup.TestField("Stars Bin Shipping");
 
         BinContent.Reset();
         BinContent.SetRange("Location Code", TransferHeader."Transfer-from Code");
