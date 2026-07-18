@@ -215,7 +215,6 @@ table 51006 "Stars Handheld Loc Security"
         {
             Caption = 'Allow Direct TO Post';
         }
-
         field(420; "Allow Transfer Receive"; Boolean)
         {
             Caption = 'Allow Transfer Receive';
@@ -223,6 +222,43 @@ table 51006 "Stars Handheld Loc Security"
         field(430; "Allow Transfer Ship"; Boolean)
         {
             Caption = 'Allow Transfer Ship';
+
+        }
+        field(431; "Allow Backup"; Boolean)
+        {
+            Caption = 'Allow Backup';
+
+        }
+
+        field(432; "Allow Replenishment"; Boolean)
+        {
+            Caption = 'Allow Replenishment';
+
+        }
+
+        field(433; "Allow Phys Automatic"; Boolean)
+        {
+            Caption = 'Allow Phys Automatic';
+        }
+
+        field(434; "Allow Phys Manual"; Boolean)
+        {
+            Caption = 'Allow Phys Manual';
+        }
+
+        field(435; "Allow Phys Sample"; Boolean)
+        {
+            Caption = 'Allow Phys Sample';
+        }
+
+        field(436; "Allow Phys Analysis"; Boolean)
+        {
+            Caption = 'Allow Phys Analysis';
+        }
+
+        field(437; "Allow Bin Inquiry"; Boolean)
+        {
+            Caption = 'Allow Bin Inquiry';
         }
     }
 

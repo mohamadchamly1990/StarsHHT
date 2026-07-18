@@ -113,36 +113,36 @@ page 51005 "Stars Handheld User Security"
                 //     ApplicationArea = All;
                 //     ToolTip = 'Specifies the value of the Allow Item Reclass. PutAway. From Location';
                 // }
-                field("Allow Put Away Transfer Post"; Rec."Allow Put Away Transfer Post")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Allow Put Away Transfer Post';
-                }
-                field("Allow Put Away Transfer Creation"; Rec."Allow PutAway Trans. Creation")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Allow Put Away Transfer Creation';
-                }
-                field("Allow Pick Transfer Post Ship"; Rec."Allow Pick Transfer Post Ship")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Allow Pick Transfer Post Ship';
-                }
-                field("Allow Pick Transfer Creation"; Rec."Allow Pick Transfer Creation")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Allow Pick Transfer Creation';
-                }
-                field("Allow Pick Transfer Post Receipt"; Rec."Allow Pick Trans. Post Receipt")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Allow Pick Transfer Post Receipt';
-                }
-                field("Allow PutAway Transfer"; Rec."Allow PutAway Transfer")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Allow PutAway Transfer';
-                }
+                // field("Allow Put Away Transfer Post"; Rec."Allow Put Away Transfer Post")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Allow Put Away Transfer Post';
+                // }
+                // field("Allow Put Away Transfer Creation"; Rec."Allow PutAway Trans. Creation")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Allow Put Away Transfer Creation';
+                // // }
+                // field("Allow Pick Transfer Post Ship"; Rec."Allow Pick Transfer Post Ship")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Allow Pick Transfer Post Ship';
+                // }
+                // field("Allow Pick Transfer Creation"; Rec."Allow Pick Transfer Creation")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Allow Pick Transfer Creation';
+                // }
+                // field("Allow Pick Transfer Post Receipt"; Rec."Allow Pick Trans. Post Receipt")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Allow Pick Transfer Post Receipt';
+                // }
+                // field("Allow PutAway Transfer"; Rec."Allow PutAway Transfer")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Allow PutAway Transfer';
+                // }
                 field("Allow Ship Transfer Pick"; Rec."Allow Ship Transfer Pick")
                 {
                     ApplicationArea = All;
@@ -168,47 +168,47 @@ page 51005 "Stars Handheld User Security"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Allow Transfer Sales Release By field.';
                 }
-                field("Allow Pick Transfer From"; Rec."Allow Pick Transfer From")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of Allow Pick Transfer From';
-                }
-                field("Allow Pick Transfer To"; Rec."Allow Pick Transfer To")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of Allow Pick Transfer To';
-                }
-                field("Allow PutAway Transfer From"; Rec."Allow PutAway Transfer From")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of Allow PutAway Transfer From';
-                }
-                field("Allow PutAway Transfer To"; Rec."Allow PutAway Transfer To")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of Allow PutAway Transfer To';
-                }
+                // field("Allow Pick Transfer From"; Rec."Allow Pick Transfer From")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of Allow Pick Transfer From';
+                // }
+                // field("Allow Pick Transfer To"; Rec."Allow Pick Transfer To")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of Allow Pick Transfer To';
+                // }
+                // field("Allow PutAway Transfer From"; Rec."Allow PutAway Transfer From")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of Allow PutAway Transfer From';
+                // }
+                // field("Allow PutAway Transfer To"; Rec."Allow PutAway Transfer To")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of Allow PutAway Transfer To';
+                // }
 
-                field("Allow Direct TO"; Rec."Allow Direct TO")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of Allow Direct TO';
-                }
-                field("Allow Direct TO Creation"; Rec."Allow Direct TO Creation")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of Allow Direct TO Creation';
-                }
-                field("Allow Direct PO Post"; Rec."Allow Direct PO Post")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of Allow Direct PO Post';
-                }
-                field("Allow Direct TO Post"; Rec."Allow Direct TO Post")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of Allow Direct TO Post';
-                }
+                // field("Allow Direct TO"; Rec."Allow Direct TO")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of Allow Direct TO';
+                // }
+                // field("Allow Direct TO Creation"; Rec."Allow Direct TO Creation")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of Allow Direct TO Creation';
+                // }
+                // field("Allow Direct PO Post"; Rec."Allow Direct PO Post")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of Allow Direct PO Post';
+                // }
+                // field("Allow Direct TO Post"; Rec."Allow Direct TO Post")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of Allow Direct TO Post';
+                // }
 
                 field("Transfer Order Creation"; Rec."Allow Transfer Creation")
                 {
@@ -223,6 +223,41 @@ page 51005 "Stars Handheld User Security"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of Allow Transfer Ship';
+                }
+                field("Allow Backup"; Rec."Allow Backup")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Allow Backup field.', Comment = '%';
+                }
+                field("Allow Bin Inquiry"; Rec."Allow Bin Inquiry")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Allow Bin Inquiry field.', Comment = '%';
+                }
+                field("Allow Phys Analysis"; Rec."Allow Phys Analysis")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Allow Phys Analysis field.', Comment = '%';
+                }
+                field("Allow Phys Automatic"; Rec."Allow Phys Automatic")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Allow Phys Automatic field.', Comment = '%';
+                }
+                field("Allow Phys Manual"; Rec."Allow Phys Manual")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Allow Phys Manual field.', Comment = '%';
+                }
+                field("Allow Phys Sample"; Rec."Allow Phys Sample")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Allow Phys Sample field.', Comment = '%';
+                }
+                field("Allow Replenishment"; Rec."Allow Replenishment")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Allow Replenishment field.', Comment = '%';
                 }
 
                 field("Is Default"; Rec."Is Default")
