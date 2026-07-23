@@ -1,4 +1,4 @@
-permissionset 51000 StarsPermission
+permissionset 50015 StarsPermission
 {
     Assignable = true;
     Permissions = tabledata "Stars Handheld Journl Security" = RIMD,

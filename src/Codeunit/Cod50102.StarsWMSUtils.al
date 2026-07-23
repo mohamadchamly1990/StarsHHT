@@ -1,4 +1,4 @@
-codeunit 51002 "Stars WMS Utils"
+codeunit 50102 "Stars WMS Utils"
 {
     Access = internal;
 
@@ -13,9 +13,13 @@ codeunit 51002 "Stars WMS Utils"
                   TableData 7326 = rimd,
                   TableData 7327 = rimd,
                   TableData 7328 = rimd,
-                  TableData 51000 = rimd,
-                  TableData 51005 = rimd,
-                  TableData 51004 = rimd;
+                  TableData 50015 = rimd,
+                  TableData 50016 = rimd,
+                  TableData 50017 = rimd,
+                  TableData 50018 = rimd,
+                  TableData 50021 = rimd,
+                  TableData 50019 = rimd,
+                  TableData 50020 = rimd;
 
     trigger OnRun()
     begin

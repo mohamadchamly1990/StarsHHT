@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-xmlport 51000 "Stars Import Scanned Items"
+xmlport 50015 "Stars Import Scanned Items"
 {
     Caption = 'Stars Import Scanned Items';
     Format = VariableText;

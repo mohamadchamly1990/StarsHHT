@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-page 51003 "Stars Handheld Sessions"
+page 50023 "Stars Handheld Sessions"
 {
     ApplicationArea = All;
     Caption = 'Stars Handheld Sessions';

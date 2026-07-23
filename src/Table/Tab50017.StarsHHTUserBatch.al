@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-table 51002 "Stars HHT User Batch"
+table 50017 "Stars HHT User Batch"
 {
     Access = internal;
     DataClassification = ToBeClassified;

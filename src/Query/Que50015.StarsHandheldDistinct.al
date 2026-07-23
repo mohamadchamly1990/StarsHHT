@@ -1,5 +1,5 @@
 // Stars 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-query 51000 "Stars Handheld Distinct"
+query 50015 "Stars Handheld Distinct"
 {
     QueryType = Normal;
     Access = internal;

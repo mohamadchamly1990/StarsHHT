@@ -2,7 +2,7 @@
   "id": "d3eef3af-4a34-4d13-bbf7-28028cfb24cd",
   "name": "Stars_HHT",
   "publisher": "Stars",
-  "version": "1.0.0.0",
+  "version": "1.0.0.1",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -23,7 +23,7 @@
   "application": "20.0.0.0",
   "idRanges": [
     {
-      "from": 51000,
+      "from": 50015,
       "to": 51999
     }
   ],

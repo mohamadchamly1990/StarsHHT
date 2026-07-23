@@ -1,4 +1,4 @@
-codeunit 51000 "Stars Handheld Utilities"
+codeunit 50100 "Stars Handheld Utilities"
 {
     Access = internal;
     PROCEDURE ImportTransferOrderLines(VAR TransferHeader: Record "Transfer Header")

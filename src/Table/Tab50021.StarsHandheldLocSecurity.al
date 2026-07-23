@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-table 51006 "Stars Handheld Loc Security"
+table 50021 "Stars Handheld Loc Security"
 {
     DataClassification = ToBeClassified;
     Caption = 'Stars Handheld Location Security';

@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-table 51000 "Stars Handheld Scan"
+table 50015 "Stars Handheld Scan"
 {
     Caption = 'HandHeld Scan';
     // DataCaptionFields = "Code", Description;

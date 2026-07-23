@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-table 51005 "Stars Handheld Journl Security"
+table 50020 "Stars Handheld Journl Security"
 {
     DataClassification = ToBeClassified;
     Caption = 'Stars Handheld Journal Security';

@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-table 51001 "Stars Handheld Users"
+table 50016 "Stars Handheld Users"
 {
     Access = internal;
     Caption = 'Stars Handheld Users';

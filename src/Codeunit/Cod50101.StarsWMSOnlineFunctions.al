@@ -1,6 +1,6 @@
 // Stars 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
 
-codeunit 51001 "Stars WMS Online Functions"
+codeunit 50101 "Stars WMS Online Functions"
 {
 
     // Access = internal;

@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-table 51003 "Stars Handheld Temp Table"
+table 50018 "Stars Handheld Temp Table"
 {
     Access = internal;
     DataClassification = ToBeClassified;

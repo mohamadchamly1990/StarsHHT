@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-page 51002 "Stars User Batch List"
+page 50022 "Stars User Batch List"
 {
     ApplicationArea = All;
     Caption = 'User Batch List';

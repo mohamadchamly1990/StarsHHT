@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-page 51004 "Stars Handheld Journl Security"
+page 50024 "Stars Handheld Journl Security"
 {
     ApplicationArea = All;
     Caption = 'Stars Handheld Journal Security';

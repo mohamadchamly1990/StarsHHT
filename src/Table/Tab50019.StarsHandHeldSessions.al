@@ -1,5 +1,5 @@
 // Meg 01.00 RH (20-09-22): HHT Functionality.(STARS-000012)
-table 51004 "Stars HandHeld Sessions"
+table 50019 "Stars HandHeld Sessions"
 {
     DataClassification = ToBeClassified;
     Caption = 'Stars HandHeld Sessions';

@@ -1,4 +1,4 @@
-query 51001 "Item Qty. By Location Query"
+query 50016 "Item Qty. By Location Query"
 {
 
     Caption = 'itemsByLocation', Locked = true;

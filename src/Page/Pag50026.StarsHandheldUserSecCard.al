@@ -1,4 +1,4 @@
-page 51006 "Stars Handheld User Sec Card"
+page 50026 "Stars Handheld User Sec Card"
 {
 
     Caption = 'Stars Handheld User Security Card';
