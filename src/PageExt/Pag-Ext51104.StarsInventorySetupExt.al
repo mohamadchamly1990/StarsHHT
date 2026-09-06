@@ -38,4 +38,23 @@ pageextension 51104 "Stars Inventory Setup Ext." extends "Inventory Setup"
 
         }
     }
+    actions
+    {
+        addafter("Import Item Pictures")
+        {
+            action("Price Check")
+            {
+                Caption = 'TEST Price Check';
+                ApplicationArea = All;
+                Image = Action;
+
+                trigger OnAction()
+                var
+                    PriceCheck: Codeunit "Stars WMS Online Functions";
+                begin
+                    Message(PriceCheck.GetRetailPricePerBarcode('1111'));
+                end;
+            }
+        }
+    }
 }

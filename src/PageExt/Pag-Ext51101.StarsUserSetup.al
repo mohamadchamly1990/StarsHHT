@@ -17,4 +17,5 @@ pageextension 51101 "Stars User Setup" extends "User Setup"
             }
         }
     }
+
 }

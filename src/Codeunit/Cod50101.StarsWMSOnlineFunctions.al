@@ -1620,149 +1620,505 @@ codeunit 50101 "Stars WMS Online Functions"
         exit(ReturnJsonT);
     end;
 
-    internal procedure GetRetailPricePerBarcode(BarcodeNoP: code[25]): Text
+    internal procedure GetRetailPricePerBarcode(BarcodeNoP: Code[25]): Text
     var
         BarcodeL: Record "LSC Barcodes";
-        ItemNoL: Code[20];
-        VariantCodeL: code[20];
-        RetailSetupL: Record "LSC Retail Setup";
+        ItemL: Record Item;
+        InventorySetupL: Record "Inventory Setup";
         StoreL: Record "LSC Store";
         StaffL: Record "LSC Staff";
         POSTerminalL: Record "LSC POS Terminal";
-        GlobalsCUL: Codeunit "LSC POS Session";
         POSTransactionL: Record "LSC POS Transaction";
         TransLineL: Record "LSC POS Trans. Line";
-        ReceiptNoL: Code[20];
-        QuantityL: Decimal;
-        PosFuncCUL: Codeunit "LSC POS Functions";
-        ItemL: Record Item;
-        PriceInBarcodeL: Decimal;
-        CalcQtyL: Decimal;
-        VatSetupL: Record "VAT Posting Setup";
-        ItemUOML: Record "Item Unit of Measure";
         NewLineL: Record "LSC POS Trans. Line";
-        JSONMgtCUL: Codeunit "JSON Management";
+        GLSetupL: Record "General Ledger Setup";
+
+        POSSessionL: Codeunit "LSC POS Session";
+        POSFunctionsL: Codeunit "LSC POS Functions";
+
+        ItemNoL: Code[20];
+        VariantCodeL: Code[20];
+        ReceiptNoL: Code[20];
+
+        QuantityL: Decimal;
+        CalcQtyL: Decimal;
+        PriceInBarcodeL: Decimal;
+
+        LineNoL: Integer;
+
         JResultL: JsonObject;
-        InventorySetup: Record "Inventory Setup";
-        DivisionL: Record "LSC Division";
-        CurrencyL: Record Currency;
-        GLSetup: Record "General Ledger Setup";
-        test: Text;
-        ReturnJSON: Text;
-        Text005: Label 'Item Not Found';
+        ReturnJsonL: Text;
     begin
-        IF (BarcodeNoP = '') THEN EXIT;
-        If BarcodeL.Get(BarcodeNoP) then begin
-            ItemNoL := BarcodeL."Item No.";
-            VariantCodeL := BarcodeL."Variant Code";
-        end;
-        //Exit(GetRetailPrice(ItemNoL, VariantCodeL));
+        // ---------------------------------------------------------
+        // Validate Barcode
+        // ---------------------------------------------------------
+        if BarcodeNoP = '' then
+            Error('Barcode cannot be blank.');
 
-        InventorySetup.GET;
-        If not ItemL.GET(ItemNoL) then
-            Error(Text005);
-        IF NOT DivisionL.GET(ItemL."LSC Division Code") THEN
-            CLEAR(DivisionL);
-        StoreL.GET(InventorySetup."Stars Default Store Pricing");
-        StaffL.SETRANGE("Store No.", StoreL."No.");
-        StaffL.FINDFIRST();
+        if not BarcodeL.Get(BarcodeNoP) then
+            Error('Barcode %1 was not found.', BarcodeNoP);
 
-        POSTerminalL.SETRANGE("Store No.", StoreL."No.");
-        POSTerminalL.FINDFIRST();
+        ItemNoL := BarcodeL."Item No.";
+        VariantCodeL := BarcodeL."Variant Code";
 
-        GlobalsCUL.SetStore(StoreL."No.");
-        GlobalsCUL.SetTerminal(POSTerminalL."No.");
+        if ItemNoL = '' then
+            Error('No item is assigned to barcode %1.', BarcodeNoP);
 
-        IF (ItemNoL = '') THEN EXIT;
+        if not ItemL.Get(ItemNoL) then
+            Error('Item %1 was not found.', ItemNoL);
 
-        POSTransactionL.SETRANGE("Receipt No.", 'XXX00000V', 'XXX99999V');
-        IF NOT POSTransactionL.FINDLAST THEN
-            ReceiptNoL := 'XXX00000V'
-        ELSE
-            ReceiptNoL := INCSTR(POSTransactionL."Receipt No.");
 
-        CLEAR(POSTransactionL);
-        CLEAR(TransLineL);
-        QuantityL := 0;
+        // ---------------------------------------------------------
+        // Setup
+        // ---------------------------------------------------------
+        InventorySetupL.Get();
+        GLSetupL.Get();
 
-        POSTransactionL."Staff ID" := StaffL.ID;
+        if InventorySetupL."Stars Default Store Pricing" = '' then
+            Error('Stars Default Store Pricing is not configured.');
+
+        if not StoreL.Get(InventorySetupL."Stars Default Store Pricing") then
+            Error(
+                'Pricing Store %1 was not found.',
+                InventorySetupL."Stars Default Store Pricing");
+
+
+        // ---------------------------------------------------------
+        // Staff
+        // ---------------------------------------------------------
+        StaffL.Reset();
+        StaffL.SetRange("Store No.", StoreL."No.");
+
+        if not StaffL.FindFirst() then
+            Error(
+                'No staff found for Store %1.',
+                StoreL."No.");
+
+
+        // ---------------------------------------------------------
+        // POS Terminal
+        // ---------------------------------------------------------
+        POSTerminalL.Reset();
+        POSTerminalL.SetRange("Store No.", StoreL."No.");
+
+        if not POSTerminalL.FindFirst() then
+            Error(
+                'No POS Terminal found for Store %1.',
+                StoreL."No.");
+
+
+        // ---------------------------------------------------------
+        // Set LS POS Session
+        // ---------------------------------------------------------
+        POSSessionL.SetStore(StoreL."No.");
+        POSSessionL.SetTerminal(POSTerminalL."No.");
+
+
+        // ---------------------------------------------------------
+        // Generate temporary receipt number
+        // Lock table to reduce duplicate receipt risk
+        // ---------------------------------------------------------
+        POSTransactionL.LockTable();
+
+        POSTransactionL.Reset();
+        POSTransactionL.SetRange(
+            "Receipt No.",
+            'XXX00000V',
+            'XXX99999V');
+
+        if POSTransactionL.FindLast() then
+            ReceiptNoL := IncStr(POSTransactionL."Receipt No.")
+        else
+            ReceiptNoL := 'XXX00000V';
+
+        if ReceiptNoL = '' then
+            Error('Unable to generate temporary pricing Receipt No.');
+
+
+        // ---------------------------------------------------------
+        // Create POS Transaction
+        // ---------------------------------------------------------
+        Clear(POSTransactionL);
+
+        POSTransactionL.Init();
+
         POSTransactionL."Receipt No." := ReceiptNoL;
         POSTransactionL."Store No." := StoreL."No.";
         POSTransactionL."POS Terminal No." := POSTerminalL."No.";
-        POSTransactionL.INSERT;
+        POSTransactionL."Staff ID" := StaffL.ID;
 
-        POSTransactionL."VAT Bus.Posting Group" := StoreL."Store VAT Bus. Post. Gr.";
-        POSTransactionL."Transaction Type" := POSTransactionL."Transaction Type"::Sales;
-        POSTransactionL."Trans. Date" := TODAY;
-        POSTransactionL."Original Date" := POSTransactionL."Trans. Date";
-        POSTransactionL."Trans Time" := TIME;
-        POSTransactionL."Trans. Currency Code" := StoreL."Currency Code";
-        POSTransactionL.MODIFY;
+        POSTransactionL."VAT Bus.Posting Group" :=
+            StoreL."Store VAT Bus. Post. Gr.";
 
-        POSTransactionL.SETRANGE("Receipt No.", ReceiptNoL);
+        POSTransactionL."Transaction Type" :=
+            POSTransactionL."Transaction Type"::Sales;
 
-        PosFuncCUL.LoadOfferTables(TRUE);
-        PosFuncCUL.PosTransDiscLoad(ReceiptNoL);
+        POSTransactionL."Trans. Date" := Today;
+        POSTransactionL."Original Date" := Today;
+        POSTransactionL."Trans Time" := Time;
 
-        CLEAR(NewLineL);
+        POSTransactionL."Trans. Currency Code" :=
+            StoreL."Currency Code";
+
+        POSTransactionL.Insert(true);
+
+
+        // ---------------------------------------------------------
+        // Load POS Offers / Discounts
+        // ---------------------------------------------------------
+        POSFunctionsL.LoadOfferTables(true);
+        POSFunctionsL.PosTransDiscLoad(ReceiptNoL);
+
+
+        // ---------------------------------------------------------
+        // Create POS Item Line
+        // ---------------------------------------------------------
+        Clear(NewLineL);
+
+        NewLineL.Init();
+
         NewLineL."Receipt No." := ReceiptNoL;
-        NewLineL."Store No." := POSTransactionL."Store No.";
-        NewLineL."POS Terminal No." := POSTransactionL."POS Terminal No.";
-        NewLineL."Entry Type" := NewLineL."Entry Type"::Item;
-        PosFuncCUL.LoadItem(NewLineL);
-        NewLineL.Number := ItemL."No.";
-        NewLineL."Barcode No." := ItemL."No.";
-        NewLineL.VALIDATE(NewLineL.Number, NewLineL.Number);
+        NewLineL."Store No." := StoreL."No.";
+        NewLineL."POS Terminal No." := POSTerminalL."No.";
+
+        NewLineL."Entry Type" :=
+            NewLineL."Entry Type"::Item;
+
+        NewLineL.Number := ItemNoL;
+
+        // IMPORTANT:
+        // Use actual barcode, not Item No.
+        NewLineL."Barcode No." := BarcodeNoP;
+
         NewLineL."Variant Code" := VariantCodeL;
-        IF NewLineL."Price in Barcode" THEN BEGIN
+
+
+        // ---------------------------------------------------------
+        // Load Item
+        // ---------------------------------------------------------
+        POSFunctionsL.LoadItem(NewLineL);
+
+        NewLineL.Validate(
+            Number,
+            ItemNoL);
+
+        // Restore actual barcode
+        NewLineL."Barcode No." := BarcodeNoP;
+
+        if VariantCodeL <> '' then
+            NewLineL."Variant Code" := VariantCodeL;
+
+
+        // ---------------------------------------------------------
+        // Quantity / Price in Barcode
+        // ---------------------------------------------------------
+        QuantityL := 1;
+        CalcQtyL := 0;
+        PriceInBarcodeL := 0;
+
+        if NewLineL."Price in Barcode" then begin
+
             PriceInBarcodeL := NewLineL.Amount;
-            NewLineL.VALIDATE(NewLineL.Amount, PriceInBarcodeL);
+
+            NewLineL.Validate(
+                Amount,
+                PriceInBarcodeL);
+
             CalcQtyL := NewLineL.Quantity;
-            QuantityL := CalcQtyL;
-        END
-        ELSE
-            IF NewLineL."Quantity in Barcode" THEN
-                QuantityL := NewLineL.Quantity
-            ELSE
-                IF QuantityL = 0 THEN
-                    QuantityL := 1;
-        POSTransactionL."VAT Bus.Posting Group" := StoreL."Store VAT Bus. Post. Gr.";
 
-        TransLineL.COPY(NewLineL);
+            if CalcQtyL <> 0 then
+                QuantityL := CalcQtyL;
 
-        TransLineL.VALIDATE(Number, TransLineL.Number);
-        TransLineL.InsertLine;
+        end else
+            if NewLineL."Quantity in Barcode" then begin
 
-        TransLineL.GET(TransLineL."Receipt No.", TransLineL."Line No.");
+                if NewLineL.Quantity <> 0 then
+                    QuantityL := NewLineL.Quantity;
 
-        IF ItemL."LSC Qty. Becomes Negative" THEN BEGIN
-            TransLineL."Item/Dept. Negative" := TRUE;
-            TransLineL.VALIDATE(TransLineL.Quantity, -QuantityL)
-        END ELSE
-            TransLineL.VALIDATE(TransLineL.Quantity, QuantityL);
+            end;
 
-        IF TransLineL."Price in Barcode" AND (QuantityL = CalcQtyL) THEN
-            TransLineL.VALIDATE(TransLineL.Amount, PriceInBarcodeL);
 
-        PosFuncCUL.PosTransDiscFlush;
-        PosFuncCUL.ChangeVATBusOnLine(POSTransactionL);
-        PosFuncCUL.RecalcSlip(POSTransactionL);
+        // ---------------------------------------------------------
+        // Insert POS Line
+        // ---------------------------------------------------------
+        Clear(TransLineL);
 
-        QuantityL := 0;
+        TransLineL.Copy(NewLineL);
 
-        JSONMgtCUL.InitializeEmptyObject();
+        TransLineL.Validate(
+            Number,
+            ItemNoL);
+
+        TransLineL.InsertLine();
+
+        LineNoL := TransLineL."Line No.";
+
+
+        // ---------------------------------------------------------
+        // Reload line
+        // ---------------------------------------------------------
+        TransLineL.Get(
+            ReceiptNoL,
+            LineNoL);
+
+
+        // ---------------------------------------------------------
+        // Quantity
+        // ---------------------------------------------------------
+        if ItemL."LSC Qty. Becomes Negative" then begin
+
+            TransLineL."Item/Dept. Negative" := true;
+
+            TransLineL.Validate(
+                Quantity,
+                -Abs(QuantityL));
+
+        end else begin
+
+            TransLineL.Validate(
+                Quantity,
+                QuantityL);
+
+        end;
+
+
+        // ---------------------------------------------------------
+        // Barcode Price
+        // ---------------------------------------------------------
+        if TransLineL."Price in Barcode" and
+           (QuantityL = CalcQtyL)
+        then
+            TransLineL.Validate(
+                Amount,
+                PriceInBarcodeL);
+
+
+        TransLineL.Modify(true);
+
+
+        // ---------------------------------------------------------
+        // Calculate LS Central Price / Offers / Discounts
+        // ---------------------------------------------------------
+        POSFunctionsL.PosTransDiscFlush();
+
+        POSFunctionsL.ChangeVATBusOnLine(
+            POSTransactionL);
+
+        POSFunctionsL.RecalcSlip(
+            POSTransactionL);
+
+
+        // ---------------------------------------------------------
+        // IMPORTANT:
+        // Reload line after RecalcSlip
+        // ---------------------------------------------------------
+        Clear(TransLineL);
+
+        TransLineL.Get(
+            ReceiptNoL,
+            LineNoL);
+
+
+        // ---------------------------------------------------------
+        // Build JSON result
+        // ---------------------------------------------------------
+        Clear(JResultL);
+
+        //     JSONMgtCUL.InitializeEmptyObject();
+        //     JResultL.Add('price', TransLineL.Price);
+        //     JResultL.Add('Description', TransLineL.Description);
+        //     JResultL.Add('discountAmount', TransLineL."Discount Amount");
+        //     JResultL.Add('discountPcnt', TransLineL."Discount %");
+        //     JResultL.Add('discountedPrice', TransLineL.Amount);
+        //     JResultL.Add('currency', GLSetup."Local Currency Symbol");
+
+
+
+
         JResultL.Add('price', TransLineL.Price);
-        JResultL.Add('Description', TransLineL.Description);
+        JResultL.Add('description', TransLineL.Description);
         JResultL.Add('discountAmount', TransLineL."Discount Amount");
         JResultL.Add('discountPcnt', TransLineL."Discount %");
         JResultL.Add('discountedPrice', TransLineL.Amount);
-        JResultL.Add('currency', GLSetup."Local Currency Symbol");
+        if StoreL."Currency Code" <> '' then
+            JResultL.Add('currency', StoreL."Currency Code")
+        else
+            JResultL.Add('currency', GLSetupL."Local Currency Symbol");
+        // ---------------------------------------------------------
+        // Cleanup POS Lines
+        // ---------------------------------------------------------
+        TransLineL.Reset();
+        TransLineL.SetRange(
+            "Receipt No.",
+            ReceiptNoL);
 
-        POSTransactionL.DELETE;
-        TransLineL.DELETE;
-        JResultL.WriteTo(ReturnJSON);
-        EXIT(ReturnJSON);
+        if not TransLineL.IsEmpty() then
+            TransLineL.DeleteAll(false);
+
+
+        // ---------------------------------------------------------
+        // Cleanup POS Transaction
+        // ---------------------------------------------------------
+        POSTransactionL.Reset();
+        POSTransactionL.SetRange(
+            "Receipt No.",
+            ReceiptNoL);
+
+        if not POSTransactionL.IsEmpty() then
+            POSTransactionL.DeleteAll(false);
+
+
+        // ---------------------------------------------------------
+        // Return JSON
+        // ---------------------------------------------------------
+        JResultL.WriteTo(ReturnJsonL);
+
+        exit(ReturnJsonL);
     end;
+
+    // internal procedure GetRetailPricePerBarcode(BarcodeNoP: code[25]): Text
+    // var
+    //     BarcodeL: Record "LSC Barcodes";
+    //     ItemNoL: Code[20];
+    //     VariantCodeL: code[20];
+    //     RetailSetupL: Record "LSC Retail Setup";
+    //     StoreL: Record "LSC Store";
+    //     StaffL: Record "LSC Staff";
+    //     POSTerminalL: Record "LSC POS Terminal";
+    //     GlobalsCUL: Codeunit "LSC POS Session";
+    //     POSTransactionL: Record "LSC POS Transaction";
+    //     TransLineL: Record "LSC POS Trans. Line";
+    //     ReceiptNoL: Code[20];
+    //     QuantityL: Decimal;
+    //     PosFuncCUL: Codeunit "LSC POS Functions";
+    //     ItemL: Record Item;
+    //     PriceInBarcodeL: Decimal;
+    //     CalcQtyL: Decimal;
+    //     VatSetupL: Record "VAT Posting Setup";
+    //     ItemUOML: Record "Item Unit of Measure";
+    //     NewLineL: Record "LSC POS Trans. Line";
+    //     JSONMgtCUL: Codeunit "JSON Management";
+    //     JResultL: JsonObject;
+    //     InventorySetup: Record "Inventory Setup";
+    //     DivisionL: Record "LSC Division";
+    //     CurrencyL: Record Currency;
+    //     GLSetup: Record "General Ledger Setup";
+    //     test: Text;
+    //     ReturnJSON: Text;
+    //     Text005: Label 'Item Not Found';
+    // begin
+    //     IF (BarcodeNoP = '') THEN EXIT;
+    //     If BarcodeL.Get(BarcodeNoP) then begin
+    //         ItemNoL := BarcodeL."Item No.";
+    //         VariantCodeL := BarcodeL."Variant Code";
+    //     end;
+    //     //Exit(GetRetailPrice(ItemNoL, VariantCodeL));
+
+    //     InventorySetup.GET;
+    //     If not ItemL.GET(ItemNoL) then
+    //         Error(Text005);
+    //     IF NOT DivisionL.GET(ItemL."LSC Division Code") THEN
+    //         CLEAR(DivisionL);
+    //     StoreL.GET(InventorySetup."Stars Default Store Pricing");
+    //     StaffL.SETRANGE("Store No.", StoreL."No.");
+    //     StaffL.FINDFIRST();
+
+    //     POSTerminalL.SETRANGE("Store No.", StoreL."No.");
+    //     POSTerminalL.FINDFIRST();
+
+    //     GlobalsCUL.SetStore(StoreL."No.");
+    //     GlobalsCUL.SetTerminal(POSTerminalL."No.");
+
+    //     IF (ItemNoL = '') THEN EXIT;
+
+    //     POSTransactionL.SETRANGE("Receipt No.", 'XXX00000V', 'XXX99999V');
+    //     IF NOT POSTransactionL.FINDLAST THEN
+    //         ReceiptNoL := 'XXX00000V'
+    //     ELSE
+    //         ReceiptNoL := INCSTR(POSTransactionL."Receipt No.");
+
+    //     CLEAR(POSTransactionL);
+    //     CLEAR(TransLineL);
+    //     QuantityL := 0;
+
+    //     POSTransactionL."Staff ID" := StaffL.ID;
+    //     POSTransactionL."Receipt No." := ReceiptNoL;
+    //     POSTransactionL."Store No." := StoreL."No.";
+    //     POSTransactionL."POS Terminal No." := POSTerminalL."No.";
+    //     POSTransactionL.INSERT;
+
+    //     POSTransactionL."VAT Bus.Posting Group" := StoreL."Store VAT Bus. Post. Gr.";
+    //     POSTransactionL."Transaction Type" := POSTransactionL."Transaction Type"::Sales;
+    //     POSTransactionL."Trans. Date" := TODAY;
+    //     POSTransactionL."Original Date" := POSTransactionL."Trans. Date";
+    //     POSTransactionL."Trans Time" := TIME;
+    //     POSTransactionL."Trans. Currency Code" := StoreL."Currency Code";
+    //     POSTransactionL.MODIFY;
+
+    //     POSTransactionL.SETRANGE("Receipt No.", ReceiptNoL);
+
+    //     PosFuncCUL.LoadOfferTables(TRUE);
+    //     PosFuncCUL.PosTransDiscLoad(ReceiptNoL);
+
+    //     CLEAR(NewLineL);
+    //     NewLineL."Receipt No." := ReceiptNoL;
+    //     NewLineL."Store No." := POSTransactionL."Store No.";
+    //     NewLineL."POS Terminal No." := POSTransactionL."POS Terminal No.";
+    //     NewLineL."Entry Type" := NewLineL."Entry Type"::Item;
+    //     PosFuncCUL.LoadItem(NewLineL);
+    //     NewLineL.Number := ItemL."No.";
+    //     NewLineL."Barcode No." := ItemL."No.";
+    //     NewLineL.VALIDATE(NewLineL.Number, NewLineL.Number);
+    //     NewLineL."Variant Code" := VariantCodeL;
+    //     IF NewLineL."Price in Barcode" THEN BEGIN
+    //         PriceInBarcodeL := NewLineL.Amount;
+    //         NewLineL.VALIDATE(NewLineL.Amount, PriceInBarcodeL);
+    //         CalcQtyL := NewLineL.Quantity;
+    //         QuantityL := CalcQtyL;
+    //     END
+    //     ELSE
+    //         IF NewLineL."Quantity in Barcode" THEN
+    //             QuantityL := NewLineL.Quantity
+    //         ELSE
+    //             IF QuantityL = 0 THEN
+    //                 QuantityL := 1;
+    //     POSTransactionL."VAT Bus.Posting Group" := StoreL."Store VAT Bus. Post. Gr.";
+
+    //     TransLineL.COPY(NewLineL);
+
+    //     TransLineL.VALIDATE(Number, TransLineL.Number);
+    //     TransLineL.InsertLine;
+
+    //     TransLineL.GET(TransLineL."Receipt No.", TransLineL."Line No.");
+
+    //     IF ItemL."LSC Qty. Becomes Negative" THEN BEGIN
+    //         TransLineL."Item/Dept. Negative" := TRUE;
+    //         TransLineL.VALIDATE(TransLineL.Quantity, -QuantityL)
+    //     END ELSE
+    //         TransLineL.VALIDATE(TransLineL.Quantity, QuantityL);
+
+    //     IF TransLineL."Price in Barcode" AND (QuantityL = CalcQtyL) THEN
+    //         TransLineL.VALIDATE(TransLineL.Amount, PriceInBarcodeL);
+
+    //     PosFuncCUL.PosTransDiscFlush;
+    //     PosFuncCUL.ChangeVATBusOnLine(POSTransactionL);
+    //     PosFuncCUL.RecalcSlip(POSTransactionL);
+
+    //     QuantityL := 0;
+
+    //     JSONMgtCUL.InitializeEmptyObject();
+    //     JResultL.Add('price', TransLineL.Price);
+    //     JResultL.Add('Description', TransLineL.Description);
+    //     JResultL.Add('discountAmount', TransLineL."Discount Amount");
+    //     JResultL.Add('discountPcnt', TransLineL."Discount %");
+    //     JResultL.Add('discountedPrice', TransLineL.Amount);
+    //     JResultL.Add('currency', GLSetup."Local Currency Symbol");
+
+    //     POSTransactionL.DELETE;
+    //     TransLineL.DELETE;
+    //     JResultL.WriteTo(ReturnJSON);
+    //     EXIT(ReturnJSON);
+    // end;
 
     internal procedure GetSalesAndDiscountedPrices(ItemNoP: Code[20]; VariantCodeP: Code[10]; UnitOfMeasureCodeP: Code[10]; var SalesPriceP: Decimal; var DiscountedPriceP: Decimal)
     begin
@@ -5861,7 +6217,7 @@ codeunit 50101 "Stars WMS Online Functions"
         if not IntMovHeaderL.GET(WhseActivityLineL."Activity Type"::"Invt. Movement", DocumentNoP) then
             EXIT(FALSE);
 
-
+        InventorySetup.Get();
         // CreateInvtPickMovementL.SetWhseRequest(WhseRequest, True);
         // CreateInvtPickMovementL.CreateInvtMvntWithoutSource(IntMovHeaderL);      
 

@@ -333,6 +333,7 @@ pageextension 51108 "Stars Transfer Orders" extends "Transfer Orders"
         WhseActivityLineL: Record "Warehouse Activity Line";
         WhseRequest: Record "Warehouse Request";
         WMSOnlineFunctions: Codeunit "Stars WMS Online Functions";
+        Location: Record Location;
     begin
 
         UploadIntoStream('Select the Excel file to Import', '', '', FromFile, InStream);
@@ -417,8 +418,15 @@ pageextension 51108 "Stars Transfer Orders" extends "Transfer Orders"
                     Codeunit.Run(Codeunit::"Release Transfer Document", TransferHeader);
                     WMSOnlineFunctions.TransferZeroQtyToShip(TransferHeader."No.", '');
 
-                    CreateInvtPickMovementL.SetWhseRequest(WhseRequest, True);
-                    CreateInvtPickMovementL.CreateInvtMvntWithoutSource(IntMovHeader);
+                    if Location.Get(TransferHeader."Transfer-from Code") then begin
+                        if Location."Bin Mandatory" then begin
+                            Clear(CreateInvtPickMovementL);
+                            Clear(WhseRequest);
+
+                            CreateInvtPickMovementL.SetWhseRequest(WhseRequest, true);
+                            CreateInvtPickMovementL.CreateInvtMvntWithoutSource(IntMovHeader);
+                        end;
+                    end;
 
                     Commit();
                 end;
